@@ -34,7 +34,7 @@ if (nombre != "" && apellido != "" && anioNacimiento != "" && anioNacimiento >= 
     alert("Usted ha ingresa un dato invalido");
 }
 
-//alert("");
+
 //Generacion Perdida (nacidos entre 1883 y 1900)
 //Generacion Grandiosa (nacidos entre 1901 y 1927)
 //Generacion Tradicionalistas o Silenciosa (nacidos entre 1928 y 1945)
