@@ -52,16 +52,17 @@
     <section class="">
       <div class="container mb-5 text-center w-50">
         <h1>Alta de Socio</h1>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="agregaNombreSocio" placeholder="Nombre">
-            <label for="floatingInput">Nombre</label>
-          </div>
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="agregaApellidoSocio" placeholder="Apellido">
-            <label for="floatingInput">Apellido</label>
-          </div>
-          <button type="submit" class="btn btn-primary" id="btnAgregarSocio">Agregar</button>
-     
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+          <label for="floatingInput">Nombre</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+          <label for="floatingInput">Apellido</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="btnAgregarSocio" onclick="cargarSocio()">Agregar</button>
+        <label id="labelMostrarSocio"></label>
+
       </div>
     </section>
   </main>
