@@ -1,12 +1,13 @@
 class Socios {
-    constructor(nombre, apellido) {
-        // this.numeroSocio = parseInt(numeroSocio);
+    constructor(nombre, apellido, numero) {
+        this.numero = parseInt(numero);
         this.nombre = nombre.toLowerCase();
         this.apellido = apellido.toLowerCase();
     }
-    confirmarSocio() {
-        document.getElementById('labelMostrarSocio').innerHTML = this.nombre;
-    }
+}
+
+function mostrartexto(idetiqueta) {
+    document.getElementById(idetiqueta).style.display = 'block';
 }
 
 const socios = [];
@@ -14,20 +15,83 @@ const socios = [];
 function cargarSocio() {
     let nombreForm = document.getElementById('nombre').value;
     let apellidoForm = document.getElementById('apellido').value;
-    socios.push(new Socios(nombreForm, apellidoForm))
-    socios.forEach(element => console.log(element))
+    //!/^[a-zA-Z]*$/g.test(nombreForm) || !/^[a-zA-Z]*$/g.test(apellidoForm)
+    if (nombreForm == "" || apellidoForm =="" || !/^[a-zA-Z]*$/g.test(nombreForm) ) {
+        document.getElementById("labelmostrarsocio").textContent = "Datos Invalidos";
+        document.getElementById("labelmostrarsocio").style.color = "red";
+    } else {
+        validartexto(nombreForm);
+        validartexto(apellidoForm);
+        let numero = socios.length;
+        let numerosocioForm = 1000 + numero;
+        console.log(numerosocioForm);
+        console.log(numero);
+        socios.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
+        limpiarFormulario();
+        document.getElementById("labelmostrarsocio").textContent = "Usuario N°: " + numerosocioForm + " agregado";
+        document.getElementById("labelmostrarsocio").style.color = "green";
+        crearTabla(socios, "tablaSocios");
+    }
+}
+
+function limpiarFormulario() {
+    document.getElementById('nombre').value = "";
+    document.getElementById('apellido').value = "";
+}
+
+function limpiaralerta() {
+    document.getElementById("labelmostrarsocio").textContent = "";
+}
+
+
+function filtrarsocios() {
+    let valorbusqueda = document.getElementById("labelbuscar").value;
+    const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda);
+    crearTabla(sociosfiltrados, "tablaSociosBusqueda");
+}
+
+function filtrarsocios2() {
+    let valorbusqueda = document.getElementById("labelbuscar").value;
+    const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda);
+    crearTabla(sociosfiltrados, "tablaSociosBusqueda");
+}
+
+
+function filtrarsociosselectivo(array, tipobusqueda, valorbusqueda) {
+    return array.filter(function (e) {
+        return e[tipobusqueda] == valorbusqueda;
+    });
+}
+
+function crearTabla(objetosocios, idtabla) {
+    let nombretabla = idtabla;
+    let tablasocios = objetosocios;
+    let html = "<table border='1|1'>";
+    html += "<tr>";
+    html += "<th>Socio N°</th>";
+    html += "<th>Nombre</th>";
+    html += "<th>Apellido</th>";
+    html += "</tr>";
+    for (let i = 0; i < tablasocios.length; i++) {
+        html += "<tr>";
+        html += "<td>" + tablasocios[i].numero + "</td>";
+        html += "<td>" + tablasocios[i].nombre + "</td>";
+        html += "<td>" + tablasocios[i].apellido + "</td>";
+        html += "</tr>";
+    }
+    html += "</table>";
+    document.getElementById(nombretabla).innerHTML = html;
 }
 
 
 
-
-/* const socios=[{id:1, nombre: "Enzo", apellido: "Ferrari", numerosocio: "1001"},
-{id:2, nombre: "Ferruccio", apellido: "Lamborghini", numerosocio: "1002"},
-{id:3, nombre: "August", apellido: "Horch", numerosocio: "1003"},
-{id:4, nombre: "Henry", apellido: "Ford", numerosocio: "1004"}
-];
-
-for ( const socio of socios){
-    console.log (socio.nombre + " "+ socio.apellido);
-  
-} */
+function validartexto(imputnombref) {
+    let imputnombre = imputnombref;
+    console.log(imputnombre)
+    if (imputnombre == "") {
+        alert("Ingrese dato valido");
+    }
+    if (!/^[a-zA-Z]*$/g.test(imputnombre)) {
+        alert("Ingrese dato valido");
+    }
+}
