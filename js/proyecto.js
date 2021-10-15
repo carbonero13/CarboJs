@@ -15,12 +15,11 @@ const socios = [];
 function cargarSocio() {
     let nombreForm = document.getElementById('nombre').value;
     let apellidoForm = document.getElementById('apellido').value;
-        if (nombreForm == "" || apellidoForm =="" || !/^[a-zA-Z]*$/g.test(nombreForm) ) {
-        document.getElementById("labelmostrarsocio").textContent = "Datos Invalidos";
+
+    if (nombreForm == "" || !/^[a-zA-Z]*$/g.test(nombreForm) || apellidoForm == "" || !/^[a-zA-Z]*$/g.test(apellidoForm)) {
+        document.getElementById("labelmostrarsocio").textContent = "Datos de Nombre y/o Apellido Invalidos";
         document.getElementById("labelmostrarsocio").style.color = "red";
-    } else {
-        validartexto(nombreForm);
-        validartexto(apellidoForm);
+     } else {
         let numero = socios.length;
         let numerosocioForm = 1000 + numero;
         console.log(numerosocioForm);
