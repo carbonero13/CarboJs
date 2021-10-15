@@ -15,8 +15,7 @@ const socios = [];
 function cargarSocio() {
     let nombreForm = document.getElementById('nombre').value;
     let apellidoForm = document.getElementById('apellido').value;
-    //!/^[a-zA-Z]*$/g.test(nombreForm) || !/^[a-zA-Z]*$/g.test(apellidoForm)
-    if (nombreForm == "" || apellidoForm =="" || !/^[a-zA-Z]*$/g.test(nombreForm) ) {
+        if (nombreForm == "" || apellidoForm =="" || !/^[a-zA-Z]*$/g.test(nombreForm) ) {
         document.getElementById("labelmostrarsocio").textContent = "Datos Invalidos";
         document.getElementById("labelmostrarsocio").style.color = "red";
     } else {
@@ -43,24 +42,10 @@ function limpiaralerta() {
     document.getElementById("labelmostrarsocio").textContent = "";
 }
 
-
 function filtrarsocios() {
     let valorbusqueda = document.getElementById("labelbuscar").value;
     const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda);
     crearTabla(sociosfiltrados, "tablaSociosBusqueda");
-}
-
-function filtrarsocios2() {
-    let valorbusqueda = document.getElementById("labelbuscar").value;
-    const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda);
-    crearTabla(sociosfiltrados, "tablaSociosBusqueda");
-}
-
-
-function filtrarsociosselectivo(array, tipobusqueda, valorbusqueda) {
-    return array.filter(function (e) {
-        return e[tipobusqueda] == valorbusqueda;
-    });
 }
 
 function crearTabla(objetosocios, idtabla) {
@@ -81,17 +66,4 @@ function crearTabla(objetosocios, idtabla) {
     }
     html += "</table>";
     document.getElementById(nombretabla).innerHTML = html;
-}
-
-
-
-function validartexto(imputnombref) {
-    let imputnombre = imputnombref;
-    console.log(imputnombre)
-    if (imputnombre == "") {
-        alert("Ingrese dato valido");
-    }
-    if (!/^[a-zA-Z]*$/g.test(imputnombre)) {
-        alert("Ingrese dato valido");
-    }
 }
