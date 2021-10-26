@@ -1,13 +1,11 @@
+//Me falta pasar las funciones al modelo 1 de eventos, para que no apararesca codigo js en el html
+// la clase la deje porque despues voy a crear otra clase que es reservas
 class Socios {
     constructor(nombre, apellido, numero) {
         this.numero = parseInt(numero);
         this.nombre = nombre.toLowerCase();
         this.apellido = apellido.toLowerCase();
     }
-}
-
-function mostrartexto(idetiqueta) {
-    document.getElementById(idetiqueta).style.display = 'block';
 }
 
 const socios = [{
@@ -113,13 +111,17 @@ const socios = [{
 
 ];
 
-function cargarSocio() {
-    let nombreForm = document.getElementById('nombre').value;
-    let apellidoForm = document.getElementById('apellido').value;
+//let nombreForm = document.getElementById('nombre').value;
+//let apellidoForm = document.getElementById('apellido').value;
+
+
+function cargarSocio(nombreForm, apellidoForm) {
+    nombreForm = document.getElementById('nombre').value;
+    apellidoForm = document.getElementById('apellido').value;
 
     if (nombreForm == "" || !/^[a-zA-Z]*$/g.test(nombreForm) || apellidoForm == "" || !/^[a-zA-Z]*$/g.test(apellidoForm)) {
         document.getElementById("labelmostrarsocio").textContent = "Datos de Nombre y/o Apellido Invalidos";
-        document.getElementById("labelmostrarsocio").style.color = "red";
+        document.getElementById("labelmostrarsocio").style.color = "red"; //Consulto como hago para hacerlo del css si lo que busco que cambie de color si el mensaje es invalido o valido
     } else {
         let numero = socios.length;
         let numerosocioForm = 1000 + numero;
@@ -127,7 +129,7 @@ function cargarSocio() {
         limpiarFormulario();
         document.getElementById("labelmostrarsocio").textContent = "Usuario N°: " + numerosocioForm + " agregado";
         document.getElementById("labelmostrarsocio").style.color = "green";
-        crearTabla(socios, "tablaSocios");
+        crearTablaDOM(socios, "tablaSocios");
     }
 }
 
@@ -142,36 +144,97 @@ function limpiaralerta() {
 
 function filtrarsocios() {
     let valorbusqueda = document.getElementById("labelbuscar").value;
-    const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda);
+
+    // const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda.toLowerCase() || element.numero==valorbusqueda || element.apellido==valorbusqueda.toLowerCase());
+    const sociosfiltrados = socios.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.numero.includes(valorbusqueda) || element.apellido.includes(valorbusqueda.toLowerCase()));
     crearTabla(sociosfiltrados, "tablaSociosBusqueda");
 }
 
 function crearTabla(objetosocios, idtabla) {
+
     let nombretabla = idtabla;
     let tablasocios = objetosocios;
-    let html = "<table border='1|1'>";
-    html += "<tr>";
-    html += "<th>Socio N°</th>";
-    html += "<th>Nombre</th>";
-    html += "<th>Apellido</th>";
-    html += "</tr>";
-    for (let i = 0; i < tablasocios.length; i++) {
+    let html = ""
+    if (tablasocios.length == 0) {
+        document.getElementById(nombretabla).innerHTML
+        html = "<p>No hay coincidencias</p>";
+    } else {
+        //sigo poniendo la parte fija de la tabla aca porque no quiero que aparezca hasta que se tenga que mostrar, no se si hay otro metodo
+        // estuve viendo 
+        html = "<table border='1|1'>";
         html += "<tr>";
-        html += "<td>" + tablasocios[i].numero + "</td>";
-        html += "<td>" + tablasocios[i].nombre + "</td>";
-        html += "<td>" + tablasocios[i].apellido + "</td>";
+        html += "<th>Socio N°</th>";
+        html += "<th>Nombre</th>";
+        html += "<th>Apellido</th>";
         html += "</tr>";
+        for (let i = 0; i < tablasocios.length; i++) {
+            html += "<tr>";
+            html += "<td>" + tablasocios[i].numero + "</td>";
+            html += "<td>" + primeramayuscula(tablasocios[i].nombre) + "</td>";
+            html += "<td>" + primeramayuscula(tablasocios[i].apellido) + "</td>";
+            html += "</tr>";
+        }
+        html += "</table>";
+        document.getElementById(nombretabla).innerHTML = html;
     }
-    html += "</table>";
-    document.getElementById(nombretabla).innerHTML = html;
 }
 
+function crearTablaDOM(objetosocios, idtabla) {
+
+    let nombretabla = idtabla;
+    let tablasocios = objetosocios;
+    const tabla = document.getElementById(nombretabla);
+    tabla.innerHTML = "";
+    tabla.setAttribute("border", "1")//Lo puse para probar si me sacaba el borde inferior grueso y no es asi, que es?
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
+    let tdTexto = document.createTextNode("Socio N°");
+    td.appendChild(tdTexto);
+    tr.appendChild(td);
+
+    td = document.createElement("td");
+    tdTexto = document.createTextNode("Nombre");
+    td.appendChild(tdTexto);
+    tr.appendChild(td);
+
+    td = document.createElement("td");
+    tdTexto = document.createTextNode("Apellido");
+    td.appendChild(tdTexto);
+    tr.appendChild(td);
+    tabla.appendChild(tr);
+
+    for (let i = 0; i < tablasocios.length; i++) {
+        //Esto despues lo voy a reemplazar por una funcion para no tener que repetir todas las lineas crearTd(valorCarga)
+        tr = document.createElement("tr");
+        td = document.createElement("td");
+        tdTexto = document.createTextNode(tablasocios[i].numero)
+        td.appendChild(tdTexto);
+        tr.appendChild(td)
+
+        td = document.createElement("td");
+        tdTexto = document.createTextNode(primeramayuscula(tablasocios[i].nombre))
+        td.appendChild(tdTexto);
+        tr.appendChild(td)
+
+        td = document.createElement("td");
+        tdTexto = document.createTextNode(primeramayuscula(tablasocios[i].apellido))
+        td.appendChild(tdTexto);
+        tr.appendChild(td);
+        tabla.appendChild(tr);
+    }
+}
+
+//Solo para el desafio por ahora no va en el proyecto
 function ordenarNombre(params) {
     const sociosordenado = socios.sort(((a, b) => b.numero - a.numero));
     console.table(sociosordenado)
     crearTabla(sociosordenado, "tablaSocios");
 }
 
-function mostrarsocios(){
-    crearTabla(socios,"tablaSocios");
+function mostrarsocios() {
+    crearTablaDOM(socios, "tablaSocios");
+}
+
+function primeramayuscula(palabra) {
+    return palabra[0].toUpperCase() + palabra.slice(1);
 }
