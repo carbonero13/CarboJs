@@ -121,7 +121,8 @@ function cargarSocio(nombreForm, apellidoForm) {
 
     if (nombreForm == "" || !/^[a-zA-Z]*$/g.test(nombreForm) || apellidoForm == "" || !/^[a-zA-Z]*$/g.test(apellidoForm)) {
         document.getElementById("labelmostrarsocio").textContent = "Datos de Nombre y/o Apellido Invalidos";
-        document.getElementById("labelmostrarsocio").style.color = "red"; //Consulto como hago para hacerlo del css si lo que busco que cambie de color si el mensaje es invalido o valido
+        //Consulto como hago para hacerlo del css si lo que busco que cambie de color si el mensaje es invalido o valido
+        document.getElementById("labelmostrarsocio").style.color = "red";
     } else {
         let numero = socios.length;
         let numerosocioForm = 1000 + numero;
@@ -160,7 +161,6 @@ function crearTabla(objetosocios, idtabla) {
         html = "<p>No hay coincidencias</p>";
     } else {
         //sigo poniendo la parte fija de la tabla aca porque no quiero que aparezca hasta que se tenga que mostrar, no se si hay otro metodo
-        // estuve viendo 
         html = "<table border='1|1'>";
         html += "<tr>";
         html += "<th>Socio N°</th>";
@@ -185,7 +185,8 @@ function crearTablaDOM(objetosocios, idtabla) {
     let tablasocios = objetosocios;
     const tabla = document.getElementById(nombretabla);
     tabla.innerHTML = "";
-    tabla.setAttribute("border", "1")//Lo puse para probar si me sacaba el borde inferior grueso y no es asi, que es?
+    //Lo puse para probar si me sacaba el borde inferior grueso y no es asi, que es?
+    tabla.setAttribute("border", "1");
     let tr = document.createElement("tr");
     let td = document.createElement("td");
     let tdTexto = document.createTextNode("Socio N°");
@@ -224,12 +225,6 @@ function crearTablaDOM(objetosocios, idtabla) {
     }
 }
 
-//Solo para el desafio por ahora no va en el proyecto
-function ordenarNombre(params) {
-    const sociosordenado = socios.sort(((a, b) => b.numero - a.numero));
-    console.table(sociosordenado)
-    crearTabla(sociosordenado, "tablaSocios");
-}
 
 function mostrarsocios() {
     crearTablaDOM(socios, "tablaSocios");
@@ -237,4 +232,10 @@ function mostrarsocios() {
 
 function primeramayuscula(palabra) {
     return palabra[0].toUpperCase() + palabra.slice(1);
+}
+//Solo para el desafio por ahora no va en el proyecto
+function ordenarNombre(params) {
+    const sociosordenado = socios.sort(((a, b) => b.numero - a.numero));
+    console.table(sociosordenado)
+    crearTabla(sociosordenado, "tablaSocios");
 }
