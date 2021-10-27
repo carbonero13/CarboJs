@@ -141,15 +141,14 @@ function cargarSocio(nombreForm, apellidoForm) {
 
     if (nombreForm == "" || !/^[a-zA-Z]*$/g.test(nombreForm) || apellidoForm == "" || !/^[a-zA-Z]*$/g.test(apellidoForm)) {
         document.getElementById("labelmostrarsocio").textContent = "Datos de Nombre y/o Apellido Invalidos";
-        //Consulto como hago para hacerlo del css si lo que busco que cambie de color si el mensaje es invalido o valido
-        document.getElementById("labelmostrarsocio").classList.replace ("textoverde", "textorojo");
+        document.getElementById("labelmostrarsocio").classList.replace("textoverde", "textorojo");
     } else {
         let numero = socios.length;
         let numerosocioForm = 1000 + numero;
         socios.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
         limpiarFormulario();
         document.getElementById("labelmostrarsocio").textContent = "Usuario N°: " + numerosocioForm + " agregado";
-        document.getElementById("labelmostrarsocio").classList.replace ("textorojo", "textoverde");
+        document.getElementById("labelmostrarsocio").classList.replace("textorojo", "textoverde");
         crearTablaDOM(socios, "tablaSocios");
     }
 }
@@ -166,12 +165,10 @@ function limpiarAlerta() {
 
 function filtrarSocios() {
     let valorbusqueda = document.getElementById("labelbuscar").value;
-
-    // const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda.toLowerCase() || element.numero==valorbusqueda || element.apellido==valorbusqueda.toLowerCase());
     const sociosfiltrados = socios.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.numero.includes(valorbusqueda) || element.apellido.includes(valorbusqueda.toLowerCase()));
-    crearTabla(sociosfiltrados, "tablaSociosBusqueda");
+    crearTablaDOM(sociosfiltrados, "tablaSociosBusqueda");
 }
-
+/* 
 function crearTabla(objetosocios, idtabla) {
 
     let nombretabla = idtabla;
@@ -181,8 +178,7 @@ function crearTabla(objetosocios, idtabla) {
         document.getElementById(nombretabla).innerHTML
         html = "<p>No hay coincidencias</p>";
     } else {
-        //sigo poniendo la parte fija de la tabla aca porque no quiero que aparezca hasta que se tenga que mostrar, no se si hay otro metodo
-        html = "<table border='1|1'>";
+          html = "<table border='1|1'>";
         html += "<tr>";
         html += "<th>Socio N°</th>";
         html += "<th>Nombre</th>";
@@ -198,7 +194,7 @@ function crearTabla(objetosocios, idtabla) {
         html += "</table>";
         document.getElementById(nombretabla).innerHTML = html;
     }
-}
+} */
 
 function crearTablaDOM(objetosocios, idtabla) {
 
@@ -215,7 +211,7 @@ function crearTablaDOM(objetosocios, idtabla) {
     tr.appendChild(crearCelda("Socio #", "th"));
     tr.appendChild(crearCelda("Nombre", "th"));
     tr.appendChild(crearCelda("Apellido", "th"));
-    
+
     theadT.appendChild(tr);
 
     for (let i = 0; i < tablasocios.length; i++) {
