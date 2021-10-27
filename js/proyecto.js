@@ -114,6 +114,26 @@ const socios = [{
 //let nombreForm = document.getElementById('nombre').value;
 //let apellidoForm = document.getElementById('apellido').value;
 
+let btnAgregarSocio=document.getElementById('btnagregarsocio')
+btnAgregarSocio.addEventListener("click", cargarSocio);
+
+let btnMostrarSocios=document.getElementById('btnmostrarsocios')
+btnMostrarSocios.addEventListener("click", mostrarSocios);
+
+let labelFormularioNombre = document.getElementById('nombre');
+labelFormularioNombre.addEventListener("focus", limpiarAlerta);
+
+let labelFormularioApellido = document.getElementById('apellido');
+labelFormularioApellido.addEventListener("focus", limpiarAlerta);
+
+let btnBuscarSocio = document.getElementById('btnbuscarsocios');
+btnBuscarSocio.addEventListener("click", filtrarSocios);
+
+
+
+
+
+
 
 function cargarSocio(nombreForm, apellidoForm) {
     nombreForm = document.getElementById('nombre').value;
@@ -139,11 +159,12 @@ function limpiarFormulario() {
     document.getElementById('apellido').value = "";
 }
 
-function limpiaralerta() {
+function limpiarAlerta() {
+
     document.getElementById("labelmostrarsocio").textContent = "";
 }
 
-function filtrarsocios() {
+function filtrarSocios() {
     let valorbusqueda = document.getElementById("labelbuscar").value;
 
     // const sociosfiltrados = socios.filter(element => element.nombre == valorbusqueda.toLowerCase() || element.numero==valorbusqueda || element.apellido==valorbusqueda.toLowerCase());
@@ -170,8 +191,8 @@ function crearTabla(objetosocios, idtabla) {
         for (let i = 0; i < tablasocios.length; i++) {
             html += "<tr>";
             html += "<td>" + tablasocios[i].numero + "</td>";
-            html += "<td>" + primeramayuscula(tablasocios[i].nombre) + "</td>";
-            html += "<td>" + primeramayuscula(tablasocios[i].apellido) + "</td>";
+            html += "<td>" + primeraMayuscula(tablasocios[i].nombre) + "</td>";
+            html += "<td>" + primeraMayuscula(tablasocios[i].apellido) + "</td>";
             html += "</tr>";
         }
         html += "</table>";
@@ -185,8 +206,8 @@ function crearTablaDOM(objetosocios, idtabla) {
     let tablasocios = objetosocios;
     const tabla = document.getElementById(nombretabla);
     tabla.innerHTML = "";
-    //Lo puse para probar si me sacaba el borde inferior grueso y no es asi, que es?
-    tabla.setAttribute("border", "1");
+    let tbodyT=document.createElement("tbody")
+    tabla.appendChild(tbodyT);
     let tr = document.createElement("tr");
     let td = document.createElement("td");
     let tdTexto = document.createTextNode("Socio N°");
@@ -202,10 +223,10 @@ function crearTablaDOM(objetosocios, idtabla) {
     tdTexto = document.createTextNode("Apellido");
     td.appendChild(tdTexto);
     tr.appendChild(td);
-    tabla.appendChild(tr);
+    tbodyT.appendChild(tr);
 
     for (let i = 0; i < tablasocios.length; i++) {
-        //Esto despues lo voy a reemplazar por una funcion para no tener que repetir todas las lineas crearTd(valorCarga)
+        //Listo ya solucione para que los dos metodos me queden igual al mostrar en pantalla
         tr = document.createElement("tr");
         td = document.createElement("td");
         tdTexto = document.createTextNode(tablasocios[i].numero)
@@ -213,24 +234,24 @@ function crearTablaDOM(objetosocios, idtabla) {
         tr.appendChild(td)
 
         td = document.createElement("td");
-        tdTexto = document.createTextNode(primeramayuscula(tablasocios[i].nombre))
+        tdTexto = document.createTextNode(primeraMayuscula(tablasocios[i].nombre))
         td.appendChild(tdTexto);
         tr.appendChild(td)
 
         td = document.createElement("td");
-        tdTexto = document.createTextNode(primeramayuscula(tablasocios[i].apellido))
+        tdTexto = document.createTextNode(primeraMayuscula(tablasocios[i].apellido))
         td.appendChild(tdTexto);
         tr.appendChild(td);
-        tabla.appendChild(tr);
+        tbodyT.appendChild(tr);
     }
 }
 
 
-function mostrarsocios() {
+function mostrarSocios() {
     crearTablaDOM(socios, "tablaSocios");
 }
 
-function primeramayuscula(palabra) {
+function primeraMayuscula(palabra) {
     return palabra[0].toUpperCase() + palabra.slice(1);
 }
 //Solo para el desafio por ahora no va en el proyecto
