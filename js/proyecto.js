@@ -206,17 +206,23 @@ function crearTablaDOM(objetosocios, idtabla) {
     let tablasocios = objetosocios;
     const tabla = document.getElementById(nombretabla);
     tabla.innerHTML = "";
+    let theadT = document.createElement("thead")
+    theadT.classList.add("col");
+    tabla.appendChild(theadT);
     let tbodyT = document.createElement("tbody")
     tabla.appendChild(tbodyT);
     let tr = document.createElement("tr");
-    tr.appendChild(crearCelda("Socio N°", "th"));
+    tr.appendChild(crearCelda("Socio #", "th"));
+   // tr.classList.add("col");
     tr.appendChild(crearCelda("Nombre", "th"));
     tr.appendChild(crearCelda("Apellido", "th"));
-    tbodyT.appendChild(tr);
+    
+    theadT.appendChild(tr);
 
     for (let i = 0; i < tablasocios.length; i++) {
         tr = document.createElement("tr");
         tr.appendChild(crearCelda(tablasocios[i].numero, "td"));
+        //tr.classList.add("");
         tr.appendChild(crearCelda(tablasocios[i].nombre, "td"));
         tr.appendChild(crearCelda(tablasocios[i].apellido, "td"));
         tbodyT.appendChild(tr);
