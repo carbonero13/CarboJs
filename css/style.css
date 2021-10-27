@@ -32,3 +32,11 @@
 table, td , tr{
   border: grey 1px solid;
 } */
+
+.textoverde{
+  color: green;
+}
+
+.textorojo{
+  color: red;
+}

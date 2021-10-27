@@ -142,14 +142,14 @@ function cargarSocio(nombreForm, apellidoForm) {
     if (nombreForm == "" || !/^[a-zA-Z]*$/g.test(nombreForm) || apellidoForm == "" || !/^[a-zA-Z]*$/g.test(apellidoForm)) {
         document.getElementById("labelmostrarsocio").textContent = "Datos de Nombre y/o Apellido Invalidos";
         //Consulto como hago para hacerlo del css si lo que busco que cambie de color si el mensaje es invalido o valido
-        document.getElementById("labelmostrarsocio").style.color = "red";
+        document.getElementById("labelmostrarsocio").classList.replace ("textoverde", "textorojo");
     } else {
         let numero = socios.length;
         let numerosocioForm = 1000 + numero;
         socios.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
         limpiarFormulario();
         document.getElementById("labelmostrarsocio").textContent = "Usuario N°: " + numerosocioForm + " agregado";
-        document.getElementById("labelmostrarsocio").style.color = "green";
+        document.getElementById("labelmostrarsocio").classList.replace ("textorojo", "textoverde");
         crearTablaDOM(socios, "tablaSocios");
     }
 }
@@ -213,7 +213,6 @@ function crearTablaDOM(objetosocios, idtabla) {
     tabla.appendChild(tbodyT);
     let tr = document.createElement("tr");
     tr.appendChild(crearCelda("Socio #", "th"));
-   // tr.classList.add("col");
     tr.appendChild(crearCelda("Nombre", "th"));
     tr.appendChild(crearCelda("Apellido", "th"));
     
