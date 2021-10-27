@@ -114,10 +114,10 @@ const socios = [{
 //let nombreForm = document.getElementById('nombre').value;
 //let apellidoForm = document.getElementById('apellido').value;
 
-let btnAgregarSocio=document.getElementById('btnagregarsocio')
+let btnAgregarSocio = document.getElementById('btnagregarsocio')
 btnAgregarSocio.addEventListener("click", cargarSocio);
 
-let btnMostrarSocios=document.getElementById('btnmostrarsocios')
+let btnMostrarSocios = document.getElementById('btnmostrarsocios')
 btnMostrarSocios.addEventListener("click", mostrarSocios);
 
 let labelFormularioNombre = document.getElementById('nombre');
@@ -206,42 +206,19 @@ function crearTablaDOM(objetosocios, idtabla) {
     let tablasocios = objetosocios;
     const tabla = document.getElementById(nombretabla);
     tabla.innerHTML = "";
-    let tbodyT=document.createElement("tbody")
+    let tbodyT = document.createElement("tbody")
     tabla.appendChild(tbodyT);
     let tr = document.createElement("tr");
-    let th = document.createElement("th");
-    let thTexto = document.createTextNode("Socio N°");
-    th.appendChild(thTexto);
-    tr.appendChild(th);
-
-    th = document.createElement("th");
-    thTexto = document.createTextNode("Nombre");
-    th.appendChild(thTexto);
-    tr.appendChild(th);
-
-    th = document.createElement("th");
-    thTexto = document.createTextNode("Apellido");
-    th.appendChild(thTexto);
-    tr.appendChild(th);
+    tr.appendChild(crearCelda("Socio N°", "th"));
+    tr.appendChild(crearCelda("Nombre", "th"));
+    tr.appendChild(crearCelda("Apellido", "th"));
     tbodyT.appendChild(tr);
 
     for (let i = 0; i < tablasocios.length; i++) {
-        //Listo ya solucione para que los dos metodos me queden igual al mostrar en pantalla
         tr = document.createElement("tr");
-        td = document.createElement("td");
-        let tdTexto = document.createTextNode(tablasocios[i].numero)
-        td.appendChild(tdTexto);
-        tr.appendChild(td)
-
-        td = document.createElement("td");
-        tdTexto = document.createTextNode(primeraMayuscula(tablasocios[i].nombre))
-        td.appendChild(tdTexto);
-        tr.appendChild(td)
-
-        td = document.createElement("td");
-        tdTexto = document.createTextNode(primeraMayuscula(tablasocios[i].apellido))
-        td.appendChild(tdTexto);
-        tr.appendChild(td);
+        tr.appendChild(crearCelda(tablasocios[i].numero, "td"));
+        tr.appendChild(crearCelda(tablasocios[i].nombre, "td"));
+        tr.appendChild(crearCelda(tablasocios[i].apellido, "td"));
         tbodyT.appendChild(tr);
     }
 }
@@ -255,8 +232,17 @@ function primeraMayuscula(palabra) {
     return palabra[0].toUpperCase() + palabra.slice(1);
 }
 //Solo para el desafio por ahora no va en el proyecto
-function ordenarNombre(params) {
+/* function ordenarNombre(params) {
     const sociosordenado = socios.sort(((a, b) => b.numero - a.numero));
     console.table(sociosordenado)
     crearTabla(sociosordenado, "tablaSocios");
+} */
+
+function crearCelda(dato, tipo) {
+    let tipocelda = tipo;
+    let datocelda = dato;
+    celda = document.createElement(tipocelda);
+    celdaTexto = document.createTextNode(primeraMayuscula(datocelda))
+    celda.appendChild(celdaTexto);
+    return celda;
 }
