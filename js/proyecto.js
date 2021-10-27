@@ -209,27 +209,27 @@ function crearTablaDOM(objetosocios, idtabla) {
     let tbodyT=document.createElement("tbody")
     tabla.appendChild(tbodyT);
     let tr = document.createElement("tr");
-    let td = document.createElement("td");
-    let tdTexto = document.createTextNode("Socio N°");
-    td.appendChild(tdTexto);
-    tr.appendChild(td);
+    let th = document.createElement("th");
+    let thTexto = document.createTextNode("Socio N°");
+    th.appendChild(thTexto);
+    tr.appendChild(th);
 
-    td = document.createElement("td");
-    tdTexto = document.createTextNode("Nombre");
-    td.appendChild(tdTexto);
-    tr.appendChild(td);
+    th = document.createElement("th");
+    thTexto = document.createTextNode("Nombre");
+    th.appendChild(thTexto);
+    tr.appendChild(th);
 
-    td = document.createElement("td");
-    tdTexto = document.createTextNode("Apellido");
-    td.appendChild(tdTexto);
-    tr.appendChild(td);
+    th = document.createElement("th");
+    thTexto = document.createTextNode("Apellido");
+    th.appendChild(thTexto);
+    tr.appendChild(th);
     tbodyT.appendChild(tr);
 
     for (let i = 0; i < tablasocios.length; i++) {
         //Listo ya solucione para que los dos metodos me queden igual al mostrar en pantalla
         tr = document.createElement("tr");
         td = document.createElement("td");
-        tdTexto = document.createTextNode(tablasocios[i].numero)
+        let tdTexto = document.createTextNode(tablasocios[i].numero)
         td.appendChild(tdTexto);
         tr.appendChild(td)
 
