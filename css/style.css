@@ -1,42 +1,49 @@
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto Condensed', sans-serif;
-  }
-  
-  .view {
-    height: 100%;
-  }
-  
-  body {
-    height: 100%;
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-  }
-  
-  html {
-    height: 100%;
-  }
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.view {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+html {
+  height: 100%;
+}
+
 .mask-quincho {
-    background-image: url(../imagenes/quincho.jpg) !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    height: 40vh;
+  background-image: url(../imagenes/quincho.jpg) !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  height: 40vh;
 }
 
 #intro {
-    height: 40vh !important;
+  height: 40vh !important;
 }
+
 /* 
 table, td , tr{
   border: grey 1px solid;
 } */
 
-.textoverde{
+.textoverde {
   color: green;
 }
 
-.textorojo{
+.textorojo {
   color: red;
+}
+
+
+table td:nth-child(1) {
+  font-weight: bold;
 }

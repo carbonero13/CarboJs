@@ -8,6 +8,113 @@ class Socios {
     }
 }
 
+class Reservas {
+    constructor(reservasocio,fecha, sala,estado) {
+        this.reservasocio= parseInt(reservasocio);
+        this.fecha= fecha;
+        this.sala = sala;
+        this.estado = estado;
+    }
+}
+
+
+const reservas = [{
+    "reservasocio": "1000",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1001",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "pago"
+},
+{
+    "reservasocio": "1002",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "pago"
+},
+{
+    "reservasocio": "1003",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1004",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "pago"
+},
+{
+    "reservasocio": "1005",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1006",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1007",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "pago"
+},
+{
+    "reservasocio": "1008",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1009",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1010",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1011",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1012",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1013",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1014",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+},
+{
+    "reservasocio": "1015",
+    "fecha": "10122021",
+    "sala": "quincho",
+    "estado": "impago"
+}]
+
 const socios = [{
         "numero": "1000",
         "nombre": "abel",
@@ -203,7 +310,6 @@ function crearTablaDOM(objetosocios, idtabla) {
     const tabla = document.getElementById(nombretabla);
     tabla.innerHTML = "";
     let theadT = document.createElement("thead")
-    theadT.classList.add("col");
     tabla.appendChild(theadT);
     let tbodyT = document.createElement("tbody")
     tabla.appendChild(tbodyT);
@@ -211,18 +317,42 @@ function crearTablaDOM(objetosocios, idtabla) {
     tr.appendChild(crearCelda("Socio #", "th"));
     tr.appendChild(crearCelda("Nombre", "th"));
     tr.appendChild(crearCelda("Apellido", "th"));
-
     theadT.appendChild(tr);
 
     for (let i = 0; i < tablasocios.length; i++) {
         tr = document.createElement("tr");
         tr.appendChild(crearCelda(tablasocios[i].numero, "td"));
-        //tr.classList.add("");
         tr.appendChild(crearCelda(tablasocios[i].nombre, "td"));
         tr.appendChild(crearCelda(tablasocios[i].apellido, "td"));
         tbodyT.appendChild(tr);
     }
 }
+
+function crearTablaReserva(objetosocios, idtabla) {
+
+    let nombretabla = idtabla;
+    let tablasocios = objetosocios;
+    const tabla = document.getElementById(nombretabla);
+    tabla.innerHTML = "";
+    let theadT = document.createElement("thead")
+    tabla.appendChild(theadT);
+    let tbodyT = document.createElement("tbody")
+    tabla.appendChild(tbodyT);
+    let tr = document.createElement("tr");
+    tr.appendChild(crearCelda("Fecha", "th"));
+    tr.appendChild(crearCelda("Sala", "th"));
+    tr.appendChild(crearCelda("Estado", "th"));
+    theadT.appendChild(tr);
+
+    for (let i = 0; i < tablasocios.length; i++) {
+        tr = document.createElement("tr");
+        tr.appendChild(crearCelda(tablasocios[i].fecha, "td"));
+        tr.appendChild(crearCelda(tablasocios[i].sala, "td"));
+        tr.appendChild(crearCelda(tablasocios[i].estado, "td"));
+        tbodyT.appendChild(tr);
+    }
+}
+
 
 
 function mostrarSocios() {
@@ -247,3 +377,13 @@ function crearCelda(dato, tipo) {
     celda.appendChild(celdaTexto);
     return celda;
 }
+
+
+
+$( "body" ).on( "click", "table tr", function() {
+    let textsocio = $(this).find("td:first-child").text();
+    const sociosfiltrados = socios.filter( element => element.numero==textsocio );
+    crearTablaDOM(sociosfiltrados, "tablaSocioMarcado");
+    const sociosreservas = reservas.filter( element => element.reservasocio==textsocio );
+    crearTablaReserva(sociosreservas, "tablaReservaMarcado");
+  });
