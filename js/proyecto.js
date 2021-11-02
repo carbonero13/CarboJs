@@ -1,231 +1,7 @@
-//Me falta pasar las funciones al modelo 1 de eventos, para que no apararesca codigo js en el html
-// la clase la deje porque despues voy a crear otra clase que es reservas
-class Socios {
-    constructor(nombre, apellido, numero) {
-        this.numero = parseInt(numero);
-        this.nombre = nombre.toLowerCase();
-        this.apellido = apellido.toLowerCase();
-    }
-}
 
-class Reservas {
-    constructor(reservasocio,fecha, sala,estado) {
-        this.reservasocio= parseInt(reservasocio);
-        this.fecha= fecha;
-        this.sala = sala;
-        this.estado = estado;
-    }
-}
-
-
-const reservas = [{
-    "reservasocio": "1000",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1001",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "pago"
-},
-{
-    "reservasocio": "1002",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "pago"
-},
-{
-    "reservasocio": "1003",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1004",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "pago"
-},
-{
-    "reservasocio": "1005",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1006",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1007",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "pago"
-},
-{
-    "reservasocio": "1008",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1009",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1010",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1011",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1012",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1013",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1014",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-},
-{
-    "reservasocio": "1015",
-    "fecha": "10122021",
-    "sala": "quincho",
-    "estado": "impago"
-}]
-
-const socios = [{
-        "numero": "1000",
-        "nombre": "abel",
-        "apellido": "tresgallo"
-    },
-    {
-        "numero": "1001",
-        "nombre": "marcelo",
-        "apellido": "cotorro"
-    },
-    {
-        "numero": "1002",
-        "nombre": "marcela",
-        "apellido": "fonseca"
-    },
-    {
-        "numero": "1003",
-        "nombre": "silvina",
-        "apellido": "arganza"
-    },
-    {
-        "numero": "1004",
-        "nombre": "ariana",
-        "apellido": "cayado"
-    },
-    {
-        "numero": "1005",
-        "nombre": "corina",
-        "apellido": "paternina"
-    },
-    {
-        "numero": "1006",
-        "nombre": "silvina",
-        "apellido": "doblas"
-    },
-    {
-        "numero": "1007",
-        "nombre": "angel",
-        "apellido": "bardon"
-    },
-    {
-        "numero": "1008",
-        "nombre": "marcelo",
-        "apellido": "logroño"
-    },
-    {
-        "numero": "1009",
-        "nombre": "ariana",
-        "apellido": "buisan"
-    },
-    {
-        "numero": "1010",
-        "nombre": "abel",
-        "apellido": "cano"
-    },
-    {
-        "numero": "1011",
-        "nombre": "carlos",
-        "apellido": "caamaño"
-    },
-    {
-        "numero": "1012",
-        "nombre": "maria",
-        "apellido": "ocampo"
-    },
-    {
-        "numero": "1013",
-        "nombre": "carlos",
-        "apellido": "soria"
-    },
-    {
-        "numero": "1014",
-        "nombre": "maria",
-        "apellido": "cobos"
-    },
-    {
-        "numero": "1015",
-        "nombre": "silvina",
-        "apellido": "carreira"
-    },
-    {
-        "numero": "1016",
-        "nombre": "marcelo",
-        "apellido": "llamosas"
-    },
-    {
-        "numero": "1017",
-        "nombre": "valeria",
-        "apellido": "ason"
-    },
-    {
-        "numero": "1018",
-        "nombre": "silvina",
-        "apellido": "olalde"
-    },
-    {
-        "numero": "1019",
-        "nombre": "valeria",
-        "apellido": "carranza"
-    },
-
-];
-
-//let nombreForm = document.getElementById('nombre').value;
-//let apellidoForm = document.getElementById('apellido').value;
-
+//las escuchas de eventos
 let btnAgregarSocio = document.getElementById('btnagregarsocio')
 btnAgregarSocio.addEventListener("click", cargarSocio);
-
-let btnMostrarSocios = document.getElementById('btnmostrarsocios')
-btnMostrarSocios.addEventListener("click", mostrarSocios);
 
 let labelFormularioNombre = document.getElementById('nombre');
 labelFormularioNombre.addEventListener("focus", limpiarAlerta);
@@ -236,12 +12,11 @@ labelFormularioApellido.addEventListener("focus", limpiarAlerta);
 let btnBuscarSocio = document.getElementById('btnbuscarsocios');
 btnBuscarSocio.addEventListener("click", filtrarSocios);
 
+let btnBuscarSocioJSON = document.getElementById('btnbuscarsociosJSON');
+btnBuscarSocioJSON.addEventListener("click", filtrarSociosJSON);
 
-
-
-
-
-
+//Carga los nuevos usuarios
+// Para json, borro el json y lo creo de nuevo actualizado
 function cargarSocio(nombreForm, apellidoForm) {
     nombreForm = document.getElementById('nombre').value;
     apellidoForm = document.getElementById('apellido').value;
@@ -254,136 +29,106 @@ function cargarSocio(nombreForm, apellidoForm) {
         let numerosocioForm = 1000 + numero;
         socios.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
         limpiarFormulario();
-        document.getElementById("labelmostrarsocio").textContent = "Usuario N°: " + numerosocioForm + " agregado";
+        let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
+        crearTablaInner(socios, "tablaSociosInner", cabeceratabla, 0);
+        let cantidadactual = sessionStorage.getItem("useragregados")
+        cantidadactual++;
+        sessionStorage.setItem("useragregados", cantidadactual);
+        document.getElementById("labelmostrarsocio").textContent = "Usuario N°: " + numerosocioForm + " agregado" + " --- Total agrados hasta ahora: " + sessionStorage.getItem("useragregados");
         document.getElementById("labelmostrarsocio").classList.replace("textorojo", "textoverde");
-        crearTablaDOM(socios, "tablaSocios");
+
     }
 }
-
+//Limpiar formularios y alertas
 function limpiarFormulario() {
     document.getElementById('nombre').value = "";
     document.getElementById('apellido').value = "";
+    document.getElementById("labelbuscar").value = "";
 }
 
 function limpiarAlerta() {
 
     document.getElementById("labelmostrarsocio").textContent = "";
 }
-
+//Deje las dos opciones para probar que funcione de las dos maneras con y sin JSON
 function filtrarSocios() {
+
     let valorbusqueda = document.getElementById("labelbuscar").value;
-    const sociosfiltrados = socios.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.numero.includes(valorbusqueda) || element.apellido.includes(valorbusqueda.toLowerCase()));
-    crearTablaDOM(sociosfiltrados, "tablaSociosBusqueda");
-}
-/* 
-function crearTabla(objetosocios, idtabla) {
-
-    let nombretabla = idtabla;
-    let tablasocios = objetosocios;
-    let html = ""
-    if (tablasocios.length == 0) {
-        document.getElementById(nombretabla).innerHTML
-        html = "<p>No hay coincidencias</p>";
+    let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
+    if (valorbusqueda >= 1000) {
+        const sociosfiltrados = socios.filter(element => element.numero == parseInt(valorbusqueda));
+        crearTablaInner(sociosfiltrados, "tablaSociosInner", cabeceratabla, 0);
     } else {
-          html = "<table border='1|1'>";
+        const sociosfiltrados = socios.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.apellido.includes(valorbusqueda.toLowerCase()));
+        crearTablaInner(sociosfiltrados, "tablaSociosInner", cabeceratabla, 0);
+    }
+}
+//Deje las dos opciones para probar que funcione de las dos maneras con y sin JSON
+function filtrarSociosJSON() {
+
+    let valorbusqueda = document.getElementById("labelbuscar").value;
+    let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
+    const sociosjson=JSON.parse(localStorage.getItem("listasocios"));
+    if (valorbusqueda >= 1000) {
+        const sociosfiltrados = sociosjson.filter(element => element.numero == parseInt(valorbusqueda));
+        crearTablaInner(sociosfiltrados, "tablaSociosInnerJSON", cabeceratabla, 0);
+    } else {
+        const sociosfiltrados = sociosjson.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.apellido.includes(valorbusqueda.toLowerCase()));
+        crearTablaInner(sociosfiltrados, "tablaSociosInnerJSON", cabeceratabla, 0);
+    }
+}
+
+
+//Funcion que crea cualquier tabla sin importar el tamaño, espero que este bien porque me costo mucho!!!!!!!! 
+//la opcion de omitir, es porque cuando muestro la reserva de un socio en particular no quiero que me muestre 
+// de nuevo el numero de socio de la tabla reserva, ya muestra el mismo dato la tabla socios
+
+function crearTablaInner(objetosociostd, idtablatd, cabeceratd, omiteprimertd) {
+    let cabecera = cabeceratd;
+    let idtabla = idtablatd;
+    let tablasocios = objetosociostd;
+    let omiteprimer = omiteprimertd;
+    let html = "";
+    html += "<tr>";
+    for (let j = 0; j < cabecera.length; j++) {
+        html += "<th>" + cabecera[j] + "</th>";
+    }
+    html += "</tr>";
+    for (let i = 0; i < tablasocios.length; i++) {
+        let linea = Object.values(tablasocios[i]);
         html += "<tr>";
-        html += "<th>Socio N°</th>";
-        html += "<th>Nombre</th>";
-        html += "<th>Apellido</th>";
-        html += "</tr>";
-        for (let i = 0; i < tablasocios.length; i++) {
-            html += "<tr>";
-            html += "<td>" + tablasocios[i].numero + "</td>";
-            html += "<td>" + primeraMayuscula(tablasocios[i].nombre) + "</td>";
-            html += "<td>" + primeraMayuscula(tablasocios[i].apellido) + "</td>";
-            html += "</tr>";
+        for (let j = omiteprimer; j < Object.keys(tablasocios[i]).length; j++) {
+            if (isNaN(linea[j])) {
+                linea[j] = primeraMayuscula(linea[j])
+            }
+            html += "<td>" + linea[j] + "</td>";
         }
-        html += "</table>";
-        document.getElementById(nombretabla).innerHTML = html;
+        html += "</tr>";
     }
-} */
-
-function crearTablaDOM(objetosocios, idtabla) {
-
-    let nombretabla = idtabla;
-    let tablasocios = objetosocios;
-    const tabla = document.getElementById(nombretabla);
-    tabla.innerHTML = "";
-    let theadT = document.createElement("thead")
-    tabla.appendChild(theadT);
-    let tbodyT = document.createElement("tbody")
-    tabla.appendChild(tbodyT);
-    let tr = document.createElement("tr");
-    tr.appendChild(crearCelda("Socio #", "th"));
-    tr.appendChild(crearCelda("Nombre", "th"));
-    tr.appendChild(crearCelda("Apellido", "th"));
-    theadT.appendChild(tr);
-
-    for (let i = 0; i < tablasocios.length; i++) {
-        tr = document.createElement("tr");
-        tr.appendChild(crearCelda(tablasocios[i].numero, "td"));
-        tr.appendChild(crearCelda(tablasocios[i].nombre, "td"));
-        tr.appendChild(crearCelda(tablasocios[i].apellido, "td"));
-        tbodyT.appendChild(tr);
-    }
+    var element = document.getElementById(idtabla);
+    element.innerHTML = html;
 }
-
-function crearTablaReserva(objetosocios, idtabla) {
-
-    let nombretabla = idtabla;
-    let tablasocios = objetosocios;
-    const tabla = document.getElementById(nombretabla);
-    tabla.innerHTML = "";
-    let theadT = document.createElement("thead")
-    tabla.appendChild(theadT);
-    let tbodyT = document.createElement("tbody")
-    tabla.appendChild(tbodyT);
-    let tr = document.createElement("tr");
-    tr.appendChild(crearCelda("Fecha", "th"));
-    tr.appendChild(crearCelda("Sala", "th"));
-    tr.appendChild(crearCelda("Estado", "th"));
-    theadT.appendChild(tr);
-
-    for (let i = 0; i < tablasocios.length; i++) {
-        tr = document.createElement("tr");
-        tr.appendChild(crearCelda(tablasocios[i].fecha, "td"));
-        tr.appendChild(crearCelda(tablasocios[i].sala, "td"));
-        tr.appendChild(crearCelda(tablasocios[i].estado, "td"));
-        tbodyT.appendChild(tr);
-    }
-}
-
-
-
-function mostrarSocios() {
-    crearTablaDOM(socios, "tablaSocios");
-}
-
+// convierte en mayuscula la primera letra
 function primeraMayuscula(palabra) {
     return palabra[0].toUpperCase() + palabra.slice(1);
 }
-//Solo para el desafio por ahora no va en el proyecto
-/* function ordenarNombre(params) {
-    const sociosordenado = socios.sort(((a, b) => b.numero - a.numero));
-    console.table(sociosordenado)
-    crearTabla(sociosordenado, "tablaSocios");
-} */
-
-function crearCelda(dato, tipo) {
-    let tipocelda = tipo;
-    let datocelda = dato;
-    celda = document.createElement(tipocelda);
-    celdaTexto = document.createTextNode(primeraMayuscula(datocelda))
-    celda.appendChild(celdaTexto);
-    return celda;
-}
-
-
-
-$( "body" ).on( "click", "table tr", function() {
-    let textsocio = $(this).find("td:first-child").text();
-    const sociosfiltrados = socios.filter( element => element.numero==textsocio );
-    crearTablaDOM(sociosfiltrados, "tablaSocioMarcado");
-    const sociosreservas = reservas.filter( element => element.reservasocio==textsocio );
-    crearTablaReserva(sociosreservas, "tablaReservaMarcado");
-  });
+// Puse el if else, porque cuando hacia clic sobre la primera fila en donde estaba los titulos me mostraba
+// las tablas vacias y quedaba mal, de esta manera si hago click desaparece la tabla, hasta que selecciones una correcta
+$("body").on("click", "#tablaSociosInner tr",
+    function () {
+        let textsocio = $(this).find("td:first-child").text();
+        if (textsocio >= 1000) {
+            const sociosfiltrados = socios.filter(element => element.numero == textsocio);
+            let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
+            crearTablaInner(sociosfiltrados, "tablaSocioMarcado", cabeceratabla, 0);
+            const sociosreservas = reservas.filter(element => element.reservasocio == textsocio);
+            cabeceratabla = ["Fechas", "Sala", "Estado"]
+            crearTablaInner(sociosreservas, "tablaReservaMarcado", cabeceratabla, 1);
+        } else {
+            let tabla = document.getElementById("tablaSocioMarcado");
+            tabla.innerHTML = "";
+            tabla = document.getElementById("tablaReservaMarcado");
+            tabla.innerHTML = "";
+        }
+    }
+);

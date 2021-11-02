@@ -53,16 +53,16 @@
       <div class="container mb-5 text-center w-50">
         <h1>Alta de Socio</h1>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="nombre" placeholder="Nombre" >
-         
+          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+
           <label for="floatingInput">Nombre</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="text" class="form-control" id="apellido" placeholder="Apellido" >
+          <input type="text" class="form-control" id="apellido" placeholder="Apellido">
           <label for="floatingInput">Apellido</label>
         </div>
-        <button type="submit" class="btn btn-primary" id="btnagregarsocio" >Agregar</button>
-        <button type="submit" class="btn btn-primary" id="btnmostrarsocios" >Mostrar Socios</button>
+        <button type="submit" class="btn btn-primary" id="btnagregarsocio">Agregar</button>
+       <!--  <button type="submit" class="btn btn-primary" id="btnmostrarsocios">Mostrar Socios</button> -->
         <div>
           <div class="" id="divlabelmostrarsocio">
             <label class="mt-3" id="labelmostrarsocio"></label>
@@ -71,32 +71,22 @@
       </div>
     </section>
     <hr>
-    <section>
+<!--     <section>
       <div id="listasocio" class="container mb-5 text-center w-50">
-        <!-- Este boton solo se uso para la entrega de clase, no se va a usar en el proyecto -->
-       <!--  <button class="btn btn-outline-secondary mb-2" type="button" id="ordenar" onclick="ordenarNombre()">Prueba Ordenar</button> -->
         <table id="tablaSocios" class="table table-hover table-responsive">
 
 
         </table>
       </div>
-    </section>
+    </section> -->
 
     <section>
       <div id="listasocio" class="container mb-5 text-center w-50">
-        <!-- Este boton solo se uso para la entrega de clase, no se va a usar en el proyecto -->
-       <!--  <button class="btn btn-outline-secondary mb-2" type="button" id="ordenar" onclick="ordenarNombre()">Prueba Ordenar</button> -->
         <table id="tablaSocioMarcado" class="table table-hover table-responsive">
-
-
         </table>
       </div>
       <div id="listasocio" class="container mb-5 text-center w-50">
-        <!-- Este boton solo se uso para la entrega de clase, no se va a usar en el proyecto -->
-       <!--  <button class="btn btn-outline-secondary mb-2" type="button" id="ordenar" onclick="ordenarNombre()">Prueba Ordenar</button> -->
         <table id="tablaReservaMarcado" class="table table-hover table-responsive">
-
-
         </table>
       </div>
     </section>
@@ -104,18 +94,44 @@
     <section>
       <div class="container mb-5 text-center w-50">
         <div id="buscarsocio" class="input-group">
-          <input type="text" class="form-control" id="labelbuscar" placeholder="Ingrese Nombre, Apellido o Numero de Socio" aria-label="Buscar Socio"
+          <input type="text" class="form-control" id="labelbuscar"
+            placeholder="Ingrese Nombre, Apellido o Numero de Socio" aria-label="Buscar Socio"
             aria-describedby="button-addon4">
           <div class="input-group-append" id="button-addon4">
-            <button class="btn btn-outline-secondary" type="button" id="btnbuscarsocios" >Buscar</button>
-            
+            <button class="btn btn-outline-secondary" type="button" id="btnbuscarsocios">Buscar</button>
           </div>
         </div>
       </div>
     </section>
+
     <section>
       <div id="listasocio" class="container mb-5 text-center w-50">
-        <table id="tablaSociosBusqueda" class="table  table-hover table-responsive ">
+        <table id="tablaSociosInner" class="table  table-hover table-responsive ">
+
+
+        </table>
+      </div>
+    </section>
+
+<hr>
+<hr>
+
+    <section>
+      <div class="container mb-5 text-center w-50">
+        <div id="buscarsocioJSON" class="input-group">
+          <input type="text" class="form-control" id="labelbuscar"
+            placeholder="Ingrese Nombre, Apellido o Numero de Socio" aria-label="Buscar Socio"
+            aria-describedby="button-addon4">
+          <div class="input-group-append" id="button-addon4">
+            <button class="btn btn-outline-secondary" type="button" id="btnbuscarsociosJSON">BuscarJSON</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div id="listasociojson" class="container mb-5 text-center w-50">
+        <table id="tablaSociosInnerJSON" class="table  table-hover table-responsive ">
 
 
         </table>
@@ -138,9 +154,12 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
   <script src="https://releases.jquery.com/git/jquery-3.x-git.min.js"></script>
+  <script src="js/clases.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/storage.js"></script>
   <script src="js/proyecto.js"></script>
-  
-  
+
+
 </body>
 
 </html>
