@@ -1,4 +1,4 @@
-
+//la idea es borrar el proyecto.js si es correcto el uso del json en proyectojason.js
 //las escuchas de eventos
 let btnAgregarSocio = document.getElementById('btnagregarsocio')
 btnAgregarSocio.addEventListener("click", cargarSocio);
@@ -106,11 +106,12 @@ $("body").on("click", "#tablaSociosInnerJSON tr",
     function () {
         let textsocio = $(this).find("td:first-child").text();
         const sociosjson=JSON.parse(localStorage.getItem("listasocios"));
+        const reservasjson=JSON.parse(localStorage.getItem("listareservas"));
         if (textsocio >= 1000) {
             const sociosfiltrados = sociosjson.filter(element => element.numero == textsocio);
             let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
             crearTablaInner(sociosfiltrados, "tablaSocioMarcado", cabeceratabla, 0);
-            const sociosreservas = reservas.filter(element => element.reservasocio == textsocio);
+            const sociosreservas = reservasjson.filter(element => element.reservasocio == textsocio);
             cabeceratabla = ["Fechas", "Sala", "Estado"]
             crearTablaInner(sociosreservas, "tablaReservaMarcado", cabeceratabla, 1);
         } else {

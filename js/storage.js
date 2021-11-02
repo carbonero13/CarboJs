@@ -5,6 +5,10 @@ const guardarsociolocal = (clave, valor) => {
 if (localStorage.getItem("listasocios") === null) {
     guardarsociolocal("listasocios", JSON.stringify(socios))
 }
+
+if (localStorage.getItem("listareservas") === null) {
+    guardarsociolocal("listareservas", JSON.stringify(reservas))
+}
 let cantidadagregada = 0;
 sessionStorage.setItem("useragregados", cantidadagregada);
 
