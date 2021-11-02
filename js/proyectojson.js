@@ -9,11 +9,14 @@ labelFormularioNombre.addEventListener("focus", limpiarAlerta);
 let labelFormularioApellido = document.getElementById('apellido');
 labelFormularioApellido.addEventListener("focus", limpiarAlerta);
 
-let btnBuscarSocio = document.getElementById('btnbuscarsocios');
-btnBuscarSocio.addEventListener("click", filtrarSocios);
 
+let btnBuscarSocioJSON = document.getElementById('btnbuscarsociosJSON');
+btnBuscarSocioJSON.addEventListener("click", filtrarSociosJSON);
 
-//Carga los nuevos usuarios
+//Cargo los datos JSON en un objeto, modifico el objeto
+//luego borro el json para volverlo a cargar asi queda actualizo el local store
+//despues lo muestro desde el objeto y desde el json para ver que sean igual
+// al recargar la pagina se puede observar que el localstore mantiene los datos mientras el metodo tradicional no
 function cargarSocio(nombreForm, apellidoForm) {
     nombreForm = document.getElementById('nombre').value;
     apellidoForm = document.getElementById('apellido').value;
@@ -22,12 +25,13 @@ function cargarSocio(nombreForm, apellidoForm) {
         document.getElementById("labelmostrarsocio").textContent = "Datos de Nombre y/o Apellido Invalidos";
         document.getElementById("labelmostrarsocio").classList.replace("textoverde", "textorojo");
     } else {
-        let numero = socios.length;
+        let sociosjson =JSON.parse(localStorage.getItem("listasocios"));
+        let numero = sociosjson.length;
         let numerosocioForm = 1000 + numero;
-        socios.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
+        sociosjson.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
         limpiarFormulario();
-        let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
-        crearTablaInner(socios, "tablaSociosInner", cabeceratabla, 0);
+        resetjson("listasocios", sociosjson)
+        filtrarSociosJSON()
         let cantidadactual = sessionStorage.getItem("useragregados")
         cantidadactual++;
         sessionStorage.setItem("useragregados", cantidadactual);
@@ -47,20 +51,20 @@ function limpiarAlerta() {
 
     document.getElementById("labelmostrarsocio").textContent = "";
 }
-//Deje las dos opciones para probar que funcione de las dos maneras con y sin JSON
-function filtrarSocios() {
+//filtra con json
+function filtrarSociosJSON() {
 
     let valorbusqueda = document.getElementById("labelbuscar").value;
     let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
+    const sociosjson=JSON.parse(localStorage.getItem("listasocios"));
     if (valorbusqueda >= 1000) {
-        const sociosfiltrados = socios.filter(element => element.numero == parseInt(valorbusqueda));
-        crearTablaInner(sociosfiltrados, "tablaSociosInner", cabeceratabla, 0);
+        const sociosfiltrados = sociosjson.filter(element => element.numero == parseInt(valorbusqueda));
+        crearTablaInner(sociosfiltrados, "tablaSociosInnerJSON", cabeceratabla, 0);
     } else {
-        const sociosfiltrados = socios.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.apellido.includes(valorbusqueda.toLowerCase()));
-        crearTablaInner(sociosfiltrados, "tablaSociosInner", cabeceratabla, 0);
+        const sociosfiltrados = sociosjson.filter(element => element.nombre.includes(valorbusqueda.toLowerCase()) || element.apellido.includes(valorbusqueda.toLowerCase()));
+        crearTablaInner(sociosfiltrados, "tablaSociosInnerJSON", cabeceratabla, 0);
     }
 }
-
 
 
 //Funcion que crea cualquier tabla sin importar el tamaño, espero que este bien porque me costo mucho!!!!!!!! 
@@ -98,11 +102,12 @@ function primeraMayuscula(palabra) {
 }
 // Puse el if else, porque cuando hacia clic sobre la primera fila en donde estaba los titulos me mostraba
 // las tablas vacias y quedaba mal, de esta manera si hago click desaparece la tabla, hasta que selecciones una correcta
-$("body").on("click", "#tablaSociosInner tr",
+$("body").on("click", "#tablaSociosInnerJSON tr",
     function () {
         let textsocio = $(this).find("td:first-child").text();
+        const sociosjson=JSON.parse(localStorage.getItem("listasocios"));
         if (textsocio >= 1000) {
-            const sociosfiltrados = socios.filter(element => element.numero == textsocio);
+            const sociosfiltrados = sociosjson.filter(element => element.numero == textsocio);
             let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
             crearTablaInner(sociosfiltrados, "tablaSocioMarcado", cabeceratabla, 0);
             const sociosreservas = reservas.filter(element => element.reservasocio == textsocio);
