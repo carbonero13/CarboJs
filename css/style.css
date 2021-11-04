@@ -47,3 +47,7 @@ table, td , tr{
 table td:nth-child(1) {
   font-weight: bold;
 }
+
+#quincho{
+  background-color: white;
+}
