@@ -1,6 +1,7 @@
 
-
+//Prueba para pasar fechas ya ocupadas ala liberia
 let fecha= [new Date('December 1, 2021'), new Date('December 2, 2021')];
+//calendario
 const myDatePicker = MCDatepicker.create({
   el: '#calendario',
 
@@ -63,22 +64,21 @@ const myDatePicker = MCDatepicker.create({
 }
 
 });
-//let fecha= new Date('December 1, 2021');
-
-console.log(fecha)
 
 
 
+// concateno nombre apellido y socio para que quede mejor a la vista
 const listinsocios = [];
 for (let i = 0; i < socios.length; i++) {
   listinsocios[i] = primeraMayuscula(socios[i].nombre) + " " + primeraMayuscula(socios[i].apellido) + " | " + socios[i].numero;
 };
-
+//cargo el filtro del imput
 $(function () {
   $("#tags").autocomplete({
     source: listinsocios
   });
 });
+
 //Como hago para guardar sin usar estas funciones
 $("#tags").change(function () {
   let socioselecionado = document.getElementById('tags').value;
