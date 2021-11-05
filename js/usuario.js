@@ -4,7 +4,6 @@ let fecha= [new Date('December 1, 2021'), new Date('December 2, 2021')];
 //calendario
 const myDatePicker = MCDatepicker.create({
   el: '#calendario',
-
   dateFormat: 'dddd, dd mmmm yyyy', 
   bodyType: 'modal',
   customWeekDays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
@@ -22,11 +21,10 @@ const myDatePicker = MCDatepicker.create({
     'Noviembre',
     'Diciembre'
   ],
-
   customOkBTN: 'Seleccionar',
   customClearBTN: 'Borrar',
   customCancelBTN: 'Cancelar',
-  disableDates: [new Date('December 1, 2021')], // ex: [new Date(2019,11, 25), new Date(2019, 11, 26)]
+  disableDates: fecha, // ex: [new Date(2019,11, 25), new Date(2019, 11, 26)]
   markDates:fecha,
   theme: {
     date: {
@@ -58,14 +56,10 @@ const myDatePicker = MCDatepicker.create({
         },
         marcked: {
             foreground: '#FF0000',
-          
         }
     }
 }
-
 });
-
-
 
 // concateno nombre apellido y socio para que quede mejor a la vista
 const listinsocios = [];
@@ -73,11 +67,17 @@ for (let i = 0; i < socios.length; i++) {
   listinsocios[i] = primeraMayuscula(socios[i].nombre) + " " + primeraMayuscula(socios[i].apellido) + " | " + socios[i].numero;
 };
 //cargo el filtro del imput
-$(function () {
-  $("#tags").autocomplete({
-    source: listinsocios
+$(function() {
+  $( "#tags" ).autocomplete({
+      source: listinsocios,
+      minLength: 0
+  }).focus(function(){
+      if (this.value == ""){
+          $(this).autocomplete("search");
+      }
   });
 });
+
 
 //Como hago para guardar sin usar estas funciones
 $("#tags").change(function () {
@@ -85,6 +85,26 @@ $("#tags").change(function () {
   sessionStorage.setItem("socioreserva", socioselecionado)
   
 });
+
+$("body").on("click", "#buttonborrarsocio",
+    function () {
+      limpiarFormulario("tags" );
+    }
+);
+
+$("body").on("click", "#buttonborrarcalendario",
+    function () {
+      limpiarFormulario("calendario" );
+    }
+);
+
+
+$("body").on("click", "#btnlimpiar",
+    function () {
+      limpiarFormulario("tags" );
+      limpiarFormulario("calendario" );
+    }
+);
 
 myDatePicker.onSelect((date, formatedDate) => {sessionStorage.setItem("fechareserva", date); });
 

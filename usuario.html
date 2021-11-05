@@ -54,101 +54,196 @@
         </div>
     </header>
     <main class="mt-5">
-
-
         <section>
-
             <hr>
-
-
-
-
-
             <div class="container mb-5 text-center w-50">
-                <h1>Formulario de reserva</h1>
-                <div class="input-group input-group mb-3">
+                <p class="h3">Reserve su Quincho</p>
+                                <div class="input-group input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default"><i class="far fa-user"></i>
                     </span>
                     <input type="text" id="tags" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm" placeholder="Ingrese y seleccione un socio">
+                      
+                        <button class="input-group-text" type="button" id="buttonborrarsocio"><i class="far fa-trash-alt"></i>
+                        </button>
                 </div>
                 <div class="input-group input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default"><i class="far fa-calendar"></i>
                     </span>
                     <input type="text" id="calendario" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing-sm" placeholder="Selecione una fecha">
+                        <button class="input-group-text" type="button" id="buttonborrarcalendario"><i class="far fa-trash-alt"></i>
+                        </button>
                 </div>
                 <div class="input-group input-group mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default"><i class="fas fa-location-arrow"></i>
                     </span>
                     <input type="text" id="quincho" class="form-control" aria-label="Sizing example input"
                         aria-describedby="inputGroup-sizing" value="Quincho" readonly>
-                
+                      <!--   <button class="input-group-text" type="button" id="buttonborrarsalon"><i class="far fa-trash-alt"></i>
+                        </button> -->
+
 
                 </div>
-                <hr>
-               
-                </div>
-                <hr>
-
-                <hr>
-
-                <div id="calendario2" class="input-group input-group mb-3">
-
-                </div>
-                <div id="buscarsocio" class="input-group">
-
-                    <input type="text" class="form-control" id="labelbuscar"
-                        placeholder="Ingrese Nombre, Apellido o Numero de Socio" aria-label="Buscar Socio"
-                        aria-describedby="button-addon4">
-                    <div class="input-group-append" id="button-addon4">
-                        <button class="btn btn-outline-secondary" type="button" id="btnguardarreserva">Guardar</button>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-success" id="btnreservar">Reservar</button>
+                <button type="submit" class="btn btn-danger" id="btnlimpiar">Limpiar</button>
             </div>
-        </section>
-        <hr>
-        <section>
-            <div class="container mb-5 text-center w-50">
-                <div id="buscarsocio" class="input-group">
-                    <input type="text" class="form-control" id="labelbuscar"
-                        placeholder="Ingrese Nombre, Apellido o Numero de Socio" aria-label="Buscar Socio"
-                        aria-describedby="button-addon4">
-                    <div class="input-group-append" id="button-addon4">
-                        <button class="btn btn-outline-secondary" type="button" id="btnbuscarsocios">Buscar</button>
-                    </div>
-                </div>
-            </div>
+
         </section>
 
-        <section>
-            <div id="listasocio" class="container mb-5 text-center w-50">
-                <table id="tablaSociosInner" class="table  table-hover table-responsive ">
+<!--         <section>
 
-
+            <div class="mc-calendar mc-calendar--modal mc-calendar--opened" tabindex="0" style="--mc-theme-color:#38ada9; --mc-main-bg:#f5f5f6; --mc-active-text-color:rgb(0, 0, 0); --mc-inactive-text-color:rgba(0, 0, 0, 0.2); --mc-display-foreground:rgba(255, 255, 255, 0.8); --mc-display-background:#38ada9; --mc-picker-foreground:rgb(0, 0, 0); --mc-picker-background:#f5f5f6; --mc-picker-header-active:#818181; --mc-picker-header-inactive:rgba(0, 0, 0, 0.2); --mc-weekday-foreground:#38ada9; --mc-btn-success-foreground:#38ada9; --mc-btn-danger-foreground:#e65151; --mc-date-active-def-foreground:rgb(0, 0, 0); --mc-date-active-pick-foreground:#ffffff; --mc-date-active-pick-background:#38ada9; --mc-date-active-today-foreground:rgb(0, 0, 0); --mc-date-active-today-background:rgba(0, 0, 0, 0.2); --mc-date-inactive-def-foreground:rgba(0, 0, 0, 0.2); --mc-date-inactive-pick-foreground:#38ada9; --mc-date-inactive-pick-background:#38ada9; --mc-date-inactive-today-foreground:rgba(0, 0, 0, 0.2); --mc-date-inactive-today-background:rgba(0, 0, 0, 0.2); --mc-date-marcked-foreground:#FF0000; --mc-prev-active-def-foreground:rgb(0, 0, 0); --mc-prev-active-pick-foreground:rgb(0, 0, 0); --mc-prev-active-pick-background:rgba(0, 0, 0,0.2); --mc-prev-inactive-def-foreground:rgba(0, 0, 0, 0.2); --mc-prev-inactive-pick-foreground:rgba(0, 0, 0, 0.2); --mc-prev-inactive-pick-background:rgba(0, 0, 0, 0.2);"><div class="mc-display" data-target="calendar">
+                <div class="mc-display__header">
+                <h3 class="mc-display__day">Lunes</h3>
+                </div>
+                <div class="mc-display__body">
+                <div class="mc-display__data mc-display__data--primary">
+                <h1 class="mc-display__date">22</h1>
+                </div>
+                <div class="mc-display__data mc-display__data--secondary">
+                <h3 class="mc-display__month">Noviembre</h3>
+                <h2 class="mc-display__year">2021</h2>
+                </div>
+                </div>
+                </div>
+                <div class="mc-picker">
+                <div class="mc-picker__header mc-select mc-container" data-target="calendar">
+                <div class="mc-select__month">
+                <button id="mc-picker__month--prev" class="mc-select__nav mc-select__nav--prev" tabindex="0" aria-label="Previous Month">
+                <svg class="icon-angle icon-angle--left" viewBox="0 0 256 512" width="10px" height="100%">
+                <path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path>
+                </svg>
+                </button>
+                <div id="mc-current--month" class="mc-select__data mc-select__data--month" tabindex="0" aria-label="Click to select month" aria-haspopup="true" aria-expanded="false" aria-controls="mc-month-year__preview"><span>Noviembre</span></div>
+                <button id="mc-picker__month--next" class="mc-select__nav mc-select__nav--next" tabindex="0" aria-label="Next Month">
+                <svg class="icon-angle icon-angle--right" viewBox="0 0 256 512" width="10px" height="100%">
+                <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                </svg>
+                </button>
+                </div>
+                <div class="mc-select__year">
+                <button id="mc-picker__year--prev" class="mc-select__nav mc-select__nav--prev">
+                <svg class="icon-angle icon-angle--left" viewBox="0 0 256 512" width="10px" height="100%">
+                <path fill="currentColor" d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path>
+                </svg>
+                </button>
+                <div id="mc-current--year" class="mc-select__data mc-select__data--year" tabindex="0" aria-label="Click to select year" aria-haspopup="true" aria-expanded="false" aria-controls="mc-month-year__preview"><span>2021</span></div>
+                <button id="mc-picker__year--next" class="mc-select__nav mc-select__nav--next">
+                <svg class="icon-angle icon-angle--right" viewBox="0 0 256 512" width="10px" height="100%">
+                <path fill="currentColor" d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path>
+                </svg>
+                </button>
+                </div>
+                <div id="mc-picker__month-year" class="mc-picker-vhidden" aria-live="polite" aria-atomic="true">Noviembre 2021</div>
+                </div>
+                <div class="mc-picker__body">
+                <table class="mc-table mc-container" aria-labelledby="mc-picker__month-year">
+                <thead class="mc-table__header">
+                <tr>
+                <th class="mc-table__weekday" aria-label="Domingo">Do</th>
+                <th class="mc-table__weekday" aria-label="Lunes">Lu</th>
+                <th class="mc-table__weekday" aria-label="Martes">Ma</th>
+                <th class="mc-table__weekday" aria-label="Miércoles">Mi</th>
+                <th class="mc-table__weekday" aria-label="Jueves">Ju</th>
+                <th class="mc-table__weekday" aria-label="Viernes">Vi</th>
+                <th class="mc-table__weekday" aria-label="Sábado">Sá</th>
+                </tr>
+                </thead>
+                <tbody class="mc-table__body">
+                <tr class="mc-table__week">
+                <td class="mc-date mc-date--inactive" data-val-date="Sun Oct 31 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Sun Oct 31 2021">31</td>
+                <td class="mc-date mc-date--active" data-val-date="Mon Nov 01 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Mon Nov 01 2021">1</td>
+                <td class="mc-date mc-date--active" data-val-date="Tue Nov 02 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Tue Nov 02 2021">2</td>
+                <td class="mc-date mc-date--active" data-val-date="Wed Nov 03 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Wed Nov 03 2021">3</td>
+                <td class="mc-date mc-date--active mc-date--today" data-val-date="Thu Nov 04 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Today: Thu Nov 04 2021">4</td>
+                <td class="mc-date mc-date--active" data-val-date="Fri Nov 05 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Fri Nov 05 2021">5</td>
+                <td class="mc-date mc-date--active" data-val-date="Sat Nov 06 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sat Nov 06 2021">6</td>
+                </tr>
+                <tr class="mc-table__week">
+                <td class="mc-date mc-date--active" data-val-date="Sun Nov 07 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sun Nov 07 2021">7</td>
+                <td class="mc-date mc-date--active" data-val-date="Mon Nov 08 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Mon Nov 08 2021">8</td>
+                <td class="mc-date mc-date--active" data-val-date="Tue Nov 09 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Tue Nov 09 2021">9</td>
+                <td class="mc-date mc-date--active" data-val-date="Wed Nov 10 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Wed Nov 10 2021">10</td>
+                <td class="mc-date mc-date--active" data-val-date="Thu Nov 11 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Thu Nov 11 2021">11</td>
+                <td class="mc-date mc-date--active" data-val-date="Fri Nov 12 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Fri Nov 12 2021">12</td>
+                <td class="mc-date mc-date--active" data-val-date="Sat Nov 13 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sat Nov 13 2021">13</td>
+                </tr>
+                <tr class="mc-table__week">
+                <td class="mc-date mc-date--active" data-val-date="Sun Nov 14 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sun Nov 14 2021">14</td>
+                <td class="mc-date mc-date--active" data-val-date="Mon Nov 15 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Mon Nov 15 2021">15</td>
+                <td class="mc-date mc-date--active" data-val-date="Tue Nov 16 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Tue Nov 16 2021">16</td>
+                <td class="mc-date mc-date--active" data-val-date="Wed Nov 17 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Wed Nov 17 2021">17</td>
+                <td class="mc-date mc-date--active" data-val-date="Thu Nov 18 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Thu Nov 18 2021">18</td>
+                <td class="mc-date mc-date--active" data-val-date="Fri Nov 19 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Fri Nov 19 2021">19</td>
+                <td class="mc-date mc-date--active" data-val-date="Sat Nov 20 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sat Nov 20 2021">20</td>
+                </tr>
+                <tr class="mc-table__week">
+                <td class="mc-date mc-date--active" data-val-date="Sun Nov 21 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sun Nov 21 2021">21</td>
+                <td class="mc-date mc-date--active mc-date--picked" data-val-date="Mon Nov 22 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Mon Nov 22 2021">22</td>
+                <td class="mc-date mc-date--active" data-val-date="Tue Nov 23 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Tue Nov 23 2021">23</td>
+                <td class="mc-date mc-date--active" data-val-date="Wed Nov 24 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Wed Nov 24 2021">24</td>
+                <td class="mc-date mc-date--active" data-val-date="Thu Nov 25 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Thu Nov 25 2021">25</td>
+                <td class="mc-date mc-date--active" data-val-date="Fri Nov 26 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Fri Nov 26 2021">26</td>
+                <td class="mc-date mc-date--active" data-val-date="Sat Nov 27 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sat Nov 27 2021">27</td>
+                </tr>
+                <tr class="mc-table__week">
+                <td class="mc-date mc-date--active" data-val-date="Sun Nov 28 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Sun Nov 28 2021">28</td>
+                <td class="mc-date mc-date--active" data-val-date="Mon Nov 29 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Mon Nov 29 2021">29</td>
+                <td class="mc-date mc-date--active" data-val-date="Tue Nov 30 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="0" aria-label="Tue Nov 30 2021">30</td>
+                <td class="mc-date mc-date--inactive mc-date--marked" data-val-date="Wed Dec 01 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Marked: Wed Dec 01 2021">1</td>
+                <td class="mc-date mc-date--inactive mc-date--marked" data-val-date="Thu Dec 02 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Marked: Thu Dec 02 2021">2</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Fri Dec 03 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Fri Dec 03 2021">3</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Sat Dec 04 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Sat Dec 04 2021">4</td>
+                </tr>
+                <tr class="mc-table__week">
+                <td class="mc-date mc-date--inactive" data-val-date="Sun Dec 05 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Sun Dec 05 2021">5</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Mon Dec 06 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Mon Dec 06 2021">6</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Tue Dec 07 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Tue Dec 07 2021">7</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Wed Dec 08 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Wed Dec 08 2021">8</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Thu Dec 09 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Thu Dec 09 2021">9</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Fri Dec 10 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Fri Dec 10 2021">10</td>
+                <td class="mc-date mc-date--inactive" data-val-date="Sat Dec 11 2021 00:00:00 GMT-0300 (hora estándar de Argentina)" tabindex="-1" aria-label="Sat Dec 11 2021">11</td>
+                </tr>
+                </tbody>
                 </table>
-            </div>
-        </section>
+                <div id="mc-month-year__preview" class="mc-month-year__preview" data-target="null" role="menu">
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                <div class="mc-month-year__cell"></div>
+                </div>
+                </div>
+                <div class="mc-picker__footer mc-container">
+                <div class="mc-footer__section mc-footer__section--primary">
+                <button id="mc-btn__clear" class="mc-btn mc-btn--danger" tabindex="0">Borrar</button>
+                </div>
+                <div class="mc-footer__section mc-footer__section--secondary">
+                <button id="mc-btn__cancel" class="mc-btn mc-btn--success" tabindex="0">Cancelar</button>
+                <button id="mc-btn__ok" class="mc-btn mc-btn--success" tabindex="0">Seleccionar</button>
+                </div>
+                </div>
+                </div></div>
 
+        </section> -->
         <hr>
-
-
-
-
-
     </main>
 
     <footer class="bg-dark text-lg-start">
-
-
         <div class="text-center p-3 ">
-
             <a class="text-light " href="https://github.com/carbonero13" rel="nofollow" target="_blank"><i
                     class="fab fa-github "></i><a class="text-white m-1">Grandinelli</a> <a
                     class="text-muted fst-italic">© 2021
                     Copyright</a>
         </div>
-
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

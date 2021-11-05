@@ -25,7 +25,9 @@ function cargarSocio(nombreForm, apellidoForm) {
         let numero = socios.length;
         let numerosocioForm = 1000 + numero;
         socios.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
-        limpiarFormulario();
+        limpiarFormulario("nombre");
+        limpiarFormulario("apellido");
+        limpiarFormulario("labelbuscar");
         let cabeceratabla = ["Socio #", "Nombre", "Apellido"]
         crearTablaInner(socios, "tablaSociosInner", cabeceratabla, 0);
         let cantidadactual = sessionStorage.getItem("useragregados")
@@ -37,10 +39,8 @@ function cargarSocio(nombreForm, apellidoForm) {
     }
 }
 //Limpiar formularios y alertas
-function limpiarFormulario() {
-    document.getElementById('nombre').value = "";
-    document.getElementById('apellido').value = "";
-    document.getElementById("labelbuscar").value = "";
+function limpiarFormulario(campo) {
+    document.getElementById(campo).value = "";
 }
 
 function limpiarAlerta() {

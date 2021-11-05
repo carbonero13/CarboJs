@@ -29,7 +29,9 @@ function cargarSocio(nombreForm, apellidoForm) {
         let numero = sociosjson.length;
         let numerosocioForm = 1000 + numero;
         sociosjson.push(new Socios(nombreForm, apellidoForm, numerosocioForm))
-        limpiarFormulario();
+        limpiarFormulario("nombre");
+        limpiarFormulario("apellido");
+        limpiarFormulario("labelbuscar");
         resetjson("listasocios", sociosjson)
         filtrarSociosJSON()
         let cantidadactual = sessionStorage.getItem("useragregados")
@@ -41,10 +43,8 @@ function cargarSocio(nombreForm, apellidoForm) {
     }
 }
 //Limpiar formularios y alertas
-function limpiarFormulario() {
-    document.getElementById('nombre').value = "";
-    document.getElementById('apellido').value = "";
-    document.getElementById("labelbuscar").value = "";
+function limpiarFormulario(campo) {
+    document.getElementById(campo).value = "";
 }
 
 function limpiarAlerta() {

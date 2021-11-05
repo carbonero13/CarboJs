@@ -48,6 +48,21 @@ table td:nth-child(1) {
   font-weight: bold;
 }
 
-#quincho{
+#quincho {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: black;
+}
+
+ #buttonborrarsocio,#buttonborrarcalendario, #buttonborrarsalon {
   background-color: white;
 }
+
+
+.mc-calendar--modal.mc-calendar--opened {
+    transition-duration: .3s;
+}
+
+/* #btnreservar{
+
+background-color: #20c997;
+} */
