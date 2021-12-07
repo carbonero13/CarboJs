@@ -53,16 +53,80 @@ table td:nth-child(1) {
   color: black;
 }
 
- #buttonborrarsocio,#buttonborrarcalendario, #buttonborrarsalon {
+#buttonborrarsocio,
+#buttonborrarcalendario,
+#buttonborrarsalon {
   background-color: white;
 }
 
 
 .mc-calendar--modal.mc-calendar--opened {
-    transition-duration: .3s;
+  transition-duration: .3s;
 }
 
-/* #btnreservar{
+/* #btnmisreservas{
 
 background-color: #20c997;
-} */
+}  */
+
+
+
+
+.row-striped:nth-of-type(odd) {
+  background-color: #efefef;
+  border-left: 4px #000000 solid;
+}
+
+.row-striped:nth-of-type(even) {
+  background-color: #ffffff;
+  border-left: 4px #adb4bb solid;
+  /*   border-left: 4px #efefef  solid; */
+}
+
+.row-striped {
+  /* padding: 5px 0; */
+  padding: 0;
+}
+
+
+.badge-secondary {
+  color: #fff;
+  background-color: #6c757d;
+}
+
+
+
+
+@media (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .container {
+    width: 500px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .container {
+    width: 500px;
+  }
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 500px;
+  }
+}
+
+
+@media (min-width: 1400px) {
+  .container {
+    width: 500px;
+  }
+}

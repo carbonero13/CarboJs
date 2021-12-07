@@ -95,7 +95,7 @@ const reservas = [{
     "sala": "quincho",
     "estado": "impago"
 }
-]
+];
 
 const socios = [{
     "numero": 1000,

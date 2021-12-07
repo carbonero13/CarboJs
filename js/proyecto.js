@@ -1,7 +1,7 @@
 
 //las escuchas de eventos
-let btnAgregarSocio = document.getElementById('btnagregarsocio')
-btnAgregarSocio.addEventListener("click", cargarSocio);
+ let btnAgregarSocio = document.getElementById('btnagregarsocio')
+btnAgregarSocio.addEventListener("click", cargarSocio); 
 
 let labelFormularioNombre = document.getElementById('nombre');
 labelFormularioNombre.addEventListener("focus", limpiarAlerta);

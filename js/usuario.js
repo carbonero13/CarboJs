@@ -1,4 +1,10 @@
 
+//Despues la en un archivo separado para no repetir funciones
+
+function primeraMayuscula(palabra) {
+  return palabra[0].toUpperCase() + palabra.slice(1);
+}
+
 //Prueba para pasar fechas ya ocupadas ala liberia
 let fecha= [new Date('December 1, 2021'), new Date('December 2, 2021')];
 //calendario
@@ -76,15 +82,26 @@ $(function() {
           $(this).autocomplete("search");
       }
   });
+
+  $("#tags").onSelect(function () {
+    let socioselecionado = this.value
+    console.log (socioselecionado);
+    sessionStorage.setItem("socioreserva", socioselecionado)
+    
+  });
 });
 
 
 //Como hago para guardar sin usar estas funciones
 $("#tags").change(function () {
   let socioselecionado = document.getElementById('tags').value;
+  console.log (socioselecionado);
   sessionStorage.setItem("socioreserva", socioselecionado)
   
 });
+
+
+
 
 $("body").on("click", "#buttonborrarsocio",
     function () {
@@ -108,4 +125,29 @@ $("body").on("click", "#btnlimpiar",
 
 myDatePicker.onSelect((date, formatedDate) => {sessionStorage.setItem("fechareserva", date); });
 
+/* Swal.fire({
+    template: '#my-template'
+  }) */
 
+let myModal = document.getElementById('myModal')
+let myInput = document.getElementById('myInput')
+
+/* myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})  */
+
+
+
+$("body").on("click", "#misreservas",function () {
+
+const sociosreservajson=JSON.parse(sessionStorage.getItem("socioreserva"));
+console.log(sociosreservajson);
+//sociosreservajson.slice(4)
+//let textsocio=1000;
+//const sociosreservas = reservas.filter(element => element.reservasocio == textsocio);
+const sociosreservas = reservas.filter(element => element.reservasocio == sociosreservajson.slice(4));
+console.table(sociosreservas)
+//console.log (sociosreservas)
+//const sociosfiltrados = sociosjson.filter(element => element.numero == parseInt(sociosreservajson.slice(4)));
+}
+);
