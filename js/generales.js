@@ -4,9 +4,9 @@ function primeraMayuscula(palabra) {
 }
 
 //** Paso A Mayuscula la primera letra de cada palabra
-function primeraPalabraMayuscula(palabra){
+function primeraPalabraMayuscula(palabra) {
   return palabra.toLowerCase().replace(/^\w|\s\w/g, function (letra) {
-      return letra.toUpperCase();
+    return letra.toUpperCase();
   })
 }
 
@@ -14,24 +14,24 @@ function primeraPalabraMayuscula(palabra){
 $("#navbtnRegistrar").click(() => {
   const URLGETPROV = "https://apis.datos.gob.ar/georef/api/provincias?campos=id,nombre&orden=id"
   $.getJSON(URLGETPROV, function (data) {
-      rellenarSelect(data.provincias, "selectProvincia");
+    rellenarSelect(data.provincias, "selectProvincia");
   });
   $('#selectProvincia').on('change', function () {
-      $('#selectDepartamento').html('<option value="">Departamento...</option>');
-      $('#selectCiudad').html('<option value="">Ciudad...</option>');
-      let provinciaSeleccionada = $('#selectProvincia').val();
-      const URLGETDEP = "https://apis.datos.gob.ar/georef/api/departamentos?provincia=" + provinciaSeleccionada + "&campos=id,nombre&orden=id&max=100";
-      $.getJSON(URLGETDEP, function (data) {
-          rellenarSelect(data.departamentos, "selectDepartamento");
-      });
+    $('#selectDepartamento').html('<option value="">Departamento...</option>');
+    $('#selectCiudad').html('<option value="">Ciudad...</option>');
+    let provinciaSeleccionada = $('#selectProvincia').val();
+    const URLGETDEP = "https://apis.datos.gob.ar/georef/api/departamentos?provincia=" + provinciaSeleccionada + "&campos=id,nombre&orden=id&max=100";
+    $.getJSON(URLGETDEP, function (data) {
+      rellenarSelect(data.departamentos, "selectDepartamento");
+    });
   });
   $('#selectDepartamento').on('change', function () {
-      $('#selectCiudad').html('<option value="">Ciudad...</option>');
-      let departamentoSeleccionada = $('#selectDepartamento').val();
-      const URLGETLOC = "https://apis.datos.gob.ar/georef/api/localidades?departamento=" + departamentoSeleccionada + "&campos=id,nombre&max=1000";
-      $.getJSON(URLGETLOC, function (data) {
-          rellenarSelect(data.localidades, "selectCiudad");
-      });
+    $('#selectCiudad').html('<option value="">Ciudad...</option>');
+    let departamentoSeleccionada = $('#selectDepartamento').val();
+    const URLGETLOC = "https://apis.datos.gob.ar/georef/api/localidades?departamento=" + departamentoSeleccionada + "&campos=id,nombre&max=1000";
+    $.getJSON(URLGETLOC, function (data) {
+      rellenarSelect(data.localidades, "selectCiudad");
+    });
   });
 });
 
@@ -40,13 +40,13 @@ function rellenarSelect(datos, elemento) {
   var datosSelect = datos;
   var nombreSelect = document.getElementById(elemento);
   for (var i in datosSelect) {
-      var optionSelect = document.createElement("option");
-      optionSelect.value = datosSelect[i].id;
-      if(elemento==="selectCiudad")
+    var optionSelect = document.createElement("option");
+    optionSelect.value = datosSelect[i].id;
+    if (elemento === "selectCiudad")
       optionSelect.textContent = primeraPalabraMayuscula(datosSelect[i].nombre);
-      else
+    else
       optionSelect.textContent = datosSelect[i].nombre;
-      nombreSelect.options.add(optionSelect);
+    nombreSelect.options.add(optionSelect);
   }
 }
 
@@ -66,7 +66,7 @@ function cerrarModal(idmodal) {
 //** Evento de cierre modal, oculto spinner y reseteo formulario y boton
 $("#registrarModal").on('hidden.bs.modal', function () {
   reseteoFormulario("#registroForm");
-  resetbtnReservar() ;
+  resetbtnReservar();
 });
 
 //** Reseteo Formulario de ingreso
@@ -85,9 +85,9 @@ function animarbtnRegistrar() {
 function mesNumero(mes) {
   let numeromes = 0
   for (let i = 0; i < 12; i++) {
-      if (mes === mesesAnio[i]) {
-          numeromes = i
-      }
+    if (mes === mesesAnio[i]) {
+      numeromes = i
+    }
   }
   return numeromes
 }
@@ -104,7 +104,23 @@ function reseteoFormulario(formulario) {
 //** Reseteo btnReservar */
 function resetbtnReservar() {
   $("#spinnerbtnRegistrar").removeClass("visible")
-.addClass("invisible");
-$("#txtbtnRegistrar").text("Registrar");
+    .addClass("invisible");
+  $("#txtbtnRegistrar").text("Registrar");
 }
 
+$("#ingreseRegistreLabel").prepend(` 
+<div class="text-black mt-3 pt-5 mb-3 pb-5" >
+  <h1 class="alert alert-info" id="textIngresoRegistro">Por favor ingrese o registrese</h1>
+</div>`);
+//Mostramos con fadeIn() todos los <h3>
+
+
+
+
+$("#textIngresoRegistro").fadeIn("slow", function(){
+  //Cuando termina de ocultarse el elemento lo mostramos nuevamente
+  $("#textIngresoRegistro").fadeOut(3000,function(){
+    //Cuando termina de ocultarse el elemento lo mostramos nuevamente
+    $("#textIngresoRegistro").fadeIn(3000);
+  });  
+});  
