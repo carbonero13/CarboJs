@@ -108,17 +108,18 @@ function resetbtnReservar() {
   $("#txtbtnRegistrar").text("Registrar");
 }
 
-$("#ingreseRegistreLabel").prepend(` 
-<div class="text-black mt-3 pt-5 mb-3 pb-5" >
+$("#bienvenidoQuincho").prepend(` 
+<h1 class="alert alert-light" id="textBienvenido">Bienvenidos al Quincho</h1>
+`);
+
+
+{/* <div class="text-black mt-3 pt-5 mb-3 pb-5" >
   <h1 class="alert alert-info" id="textIngresoRegistro">Por favor ingrese o registrese</h1>
-</div>`);
-
-
-
+</div> */}
 
 //Mostramos con fadeIn() 
-$("#textIngresoRegistro").fadeIn("slow", function(){
-  $("#textIngresoRegistro").fadeOut(3000,function(){
-    $("#textIngresoRegistro").fadeIn(3000);
+$("#textBienvenido").fadeIn("slow", function(){
+  $("#textBienvenido").fadeOut(3000,function(){
+    $("#textBienvenido").fadeIn(3000);
   });  
 });  
