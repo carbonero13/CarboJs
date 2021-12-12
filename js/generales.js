@@ -112,15 +112,13 @@ $("#ingreseRegistreLabel").prepend(`
 <div class="text-black mt-3 pt-5 mb-3 pb-5" >
   <h1 class="alert alert-info" id="textIngresoRegistro">Por favor ingrese o registrese</h1>
 </div>`);
-//Mostramos con fadeIn() todos los <h3>
 
 
 
 
+//Mostramos con fadeIn() 
 $("#textIngresoRegistro").fadeIn("slow", function(){
-  //Cuando termina de ocultarse el elemento lo mostramos nuevamente
   $("#textIngresoRegistro").fadeOut(3000,function(){
-    //Cuando termina de ocultarse el elemento lo mostramos nuevamente
     $("#textIngresoRegistro").fadeIn(3000);
   });  
 });  
