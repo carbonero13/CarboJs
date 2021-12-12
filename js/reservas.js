@@ -60,17 +60,13 @@ function cargarMisReservas() {
              <h3 class="m-0"><span class="badge badge-secondary pt-1 m-0">${sociosordenado2.timestamp.toDate().getDate()}</span></h3>
              <h5 class="m-0">${numeroMes(sociosordenado2.timestamp.toDate().getMonth())}</h5>
             </div>
-             <div class="col-8 m-0">
+             <div class="col-10 m-0">
              <h2 class="text-uppercase m-0"><strong>${sociosordenado2.quincho}</strong></h2>
              <ul class="list-inline m-0">
                  <li class="list-inline-item m-0"><i class="far fa-calendar-check" aria-hidden="true"></i> ${sociosordenado2.fecha}</li>        
                 </ul>
             </div>
-            <div class="col-2 m-0 text-end">
-            <button type="button" class="btn btn-outline-secondary w-90" id="edit"><i class="fas fa-pencil-alt"></i></button>
-            <button type="button" class="btn btn-outline-secondary w-90"  id="delete"><i class="far fa-trash-alt"></i></button>
-          </div>
-            
+
         </div>`
         }
     }).catch((error) => {
