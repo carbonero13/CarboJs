@@ -8,10 +8,10 @@
   height: 100%;
 }
 
-body {
+body{
   height: 100%;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
+ 
 }
 
 html {
@@ -30,10 +30,6 @@ html {
   height: 40vh !important;
 }
 
-/* 
-table, td , tr{
-  border: grey 1px solid;
-} */
 
 .textoverde {
   color: green;
@@ -59,18 +55,9 @@ table td:nth-child(1) {
   background-color: white;
 }
 
-
 .mc-calendar--modal.mc-calendar--opened {
   transition-duration: .3s;
 }
-
-/* #btnmisreservas{
-
-background-color: #20c997;
-}  */
-
-
-
 
 .row-striped:nth-of-type(odd) {
   background-color: #efefef;
@@ -80,14 +67,8 @@ background-color: #20c997;
 .row-striped:nth-of-type(even) {
   background-color: #ffffff;
   border-left: 4px #adb4bb solid;
-  /*   border-left: 4px #efefef  solid; */
+ 
 }
-
-.row-striped {
-  /* padding: 5px 0; */
-  padding: 0;
-}
-
 
 .badge-secondary {
   color: #fff;
@@ -95,38 +76,11 @@ background-color: #20c997;
 }
 
 
-
-
-@media (max-width: 767px) {
-  .container {
-    width: 90%;
-  }
+.bk-fondo-footer {
+  background-color: #1C2331;
 }
 
-
-@media (min-width: 768px) {
-  .container {
-    width: 500px;
-  }
+.bk-fondo-footer-claro {
+  background-color: #2d384e;
 }
 
-
-@media (min-width: 992px) {
-  .container {
-    width: 500px;
-  }
-}
-
-
-@media (min-width: 1200px) {
-  .container {
-    width: 500px;
-  }
-}
-
-
-@media (min-width: 1400px) {
-  .container {
-    width: 500px;
-  }
-}
