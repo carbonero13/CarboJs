@@ -11,10 +11,11 @@ class Usuarios {
 }
 
 class Reservasfill {
-    constructor(timestamp, fecha, quincho) {
+    constructor(timestamp, fecha, quincho, id) {
         this.timestamp = timestamp;
         this.fecha = fecha;
         this.quincho = quincho;
+        this.id = id;
 
     }
 }

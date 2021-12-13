@@ -21,6 +21,7 @@ reservas.addEventListener("submit", e => {
                 reseteoFormulario("#reservaForm");
                 cargarMisReservas();
                 exito("Reserva realizada")
+                actualizoCalendario() 
             })
             .catch((error) => {
                 algoSalioMal();
@@ -33,11 +34,25 @@ reservas.addEventListener("submit", e => {
 
 // Obtengo las reservas de un usuario especifico
 const misReservas = document.getElementById("btnMisReservas")
-misReservas.addEventListener("click", e => {
+misReservas.addEventListener("click", (e) => {
     e.preventDefault();
-    cargarMisReservas()
-
+    cargarMisReservas();
 });
+
+//Borro la reserva seleccionada
+
+function borrarReserva(id) {
+    db.collection("reservas").doc(id).delete()
+        .then(() => {        
+            actualizoCalendario() 
+            cargarMisReservas();
+            exito("Reserva Borrada");
+        })
+        .catch((error) => {
+            algoSalioMal();
+        });
+}
+
 
 
 // Cargo Reservas en el HTML
@@ -48,28 +63,42 @@ function cargarMisReservas() {
         const reservasfill = []
         querySnapshot.forEach((doc) => {
             const stampToFechas = doc.data().fecha.toDate().toLocaleDateString("es-AR", optionsCalendarioLargo);
-            const objreservasfill = new Reservasfill(doc.data().fecha, stampToFechas, doc.data().quincho)
+            const objreservasfill = new Reservasfill(doc.data().fecha, stampToFechas, doc.data().quincho, doc.id)
             const cont = reservasfill.push(objreservasfill);
         });
         const sociosordenado = reservasfill.sort(((a, b) => a.timestamp - b.timestamp));
+     
         for (const sociosordenado2 of sociosordenado) {
             reservaContenedor.innerHTML +=
                 `
-        <div class="row row-striped m-0">
-            <div class="col-2 text-center  m-0">
-             <h3 class="m-0"><span class="badge badge-secondary pt-1 m-0">${sociosordenado2.timestamp.toDate().getDate()}</span></h3>
-             <h5 class="m-0">${numeroMes(sociosordenado2.timestamp.toDate().getMonth())}</h5>
-            </div>
-             <div class="col-10 m-0">
-             <h2 class="text-uppercase m-0"><strong>${sociosordenado2.quincho}</strong></h2>
-             <ul class="list-inline m-0">
-                 <li class="list-inline-item m-0"><i class="far fa-calendar-check" aria-hidden="true"></i> ${sociosordenado2.fecha}</li>        
-                </ul>
-            </div>
+                <div class="row row-striped m-0">
+                    <div class="col-2 text-center  m-0">
+                    <h3 class="m-0"><span class="badge badge-secondary pt-1 m-0">${sociosordenado2.timestamp.toDate().getDate()}</span></h3>
+                    <h5 class="m-0">${numeroMes(sociosordenado2.timestamp.toDate().getMonth())}</h5>
+                    </div>
+                    <div class="col-8 m-0">
+                    <h2 class="text-uppercase m-0"><strong>${sociosordenado2.quincho}</strong></h2>
+                    <ul class="list-inline m-0">
+                        <li class="list-inline-item m-0"><i class="far fa-calendar-check" aria-hidden="true"></i> ${sociosordenado2.fecha}</li>        
+                        </ul>
+                    </div>
+                    <div class="col-2 m-0 text-end">
+                      <button type="button" class="btn btn-outline-secondary w-90 btn-borrar"  data-id="${sociosordenado2.id}" id="${sociosordenado2.id}"><i class="far fa-trash-alt"></i></button>
+                </div>
+                </div>`;
+         
+            const btnsBorrar = document.querySelectorAll(".btn-borrar");
+        
+            btnsBorrar.forEach(btn => {
+                btn.addEventListener("click", (e) => {
+                    borrarReserva(btn.id);
+                   
+                });
+            });
 
-        </div>`
         }
     }).catch((error) => {
         reservaContenedor.innerHTML += `<h2>No hay Reservas</h2>`
     });
+
 }

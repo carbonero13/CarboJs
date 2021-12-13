@@ -32,7 +32,7 @@ const mesesAnio = [
 ];
 
 /** Dias del año abreviado para las reservas */
-const mesesAnioAbrev=[
+const mesesAnioAbrev = [
     'ENE',
     'FEB',
     'MAR',
@@ -46,4 +46,11 @@ const mesesAnioAbrev=[
     'NOV',
     'DIC'
 ];
+
+const fechahoy = new Date();
+
+//** Cargo los datos de las fechas reservadas
+let fechaReservadas = [];
+
+
 

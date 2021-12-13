@@ -60,24 +60,24 @@ registroForm.addEventListener("submit", (e) => {
     const registroDepartamento = textoSelect("#selectDepartamento");
     const registroCiudad = textoSelect("#selectCiudad");
     const usuarioGuardar = new Usuarios(registroNombre, registroApellido, registroCorreo, registroProvincia, registroDepartamento, registroCiudad);
-        auth.createUserWithEmailAndPassword(registroCorreo, registroPassword)
-            .then((userCredential) => {
-                let user = userCredential.user;
-                guardarUsuario(usuarioGuardar);
-                document.getElementById("usuarioLogueado").innerHTML = user.email;
-                cerrarModal("#registrarModal");
-                let ss = localStorage.setItem("key", user.uid);
-                Toast.fire({
-                    icon: 'success',
-                    title: 'Te registraste con exito'
-                });
-            })
-            .catch((error) => {
-                let errorCode = error.code;
-                let errorMessage = error.message;
-                resetbtnReservar();
-                algoSalioMal("No se pudo crear el usuario, intente nuevamente");
+    auth.createUserWithEmailAndPassword(registroCorreo, registroPassword)
+        .then((userCredential) => {
+            let user = userCredential.user;
+            guardarUsuario(usuarioGuardar);
+            document.getElementById("usuarioLogueado").innerHTML = user.email;
+            cerrarModal("#registrarModal");
+            let ss = localStorage.setItem("key", user.uid);
+            Toast.fire({
+                icon: 'success',
+                title: 'Te registraste con exito'
             });
+        })
+        .catch((error) => {
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            resetbtnReservar();
+            algoSalioMal("No se pudo crear el usuario, intente nuevamente");
+        });
 });
 
 
@@ -160,3 +160,19 @@ function completarPerfil(dato) {
     perfilFormulario["perfilDepartamento"].value = primeraPalabraMayuscula(datoPerfil.departamento);
     perfilFormulario["perfilCiudad"].value = primeraPalabraMayuscula(datoPerfil.ciudad);
 }
+
+
+//**Actualizo calendario para poder bloquear las reservas en el calendario
+function actualizoCalendario() {
+
+    db.collection("reservas").get().then((querySnapshot) => {
+        fechaReservadas.length=0
+        querySnapshot.forEach((doc) => {
+            let fecha = doc.data().fecha.toDate()
+            let cont = fechaReservadas.push(fecha);
+        });
+    });
+
+}
+
+actualizoCalendario();
